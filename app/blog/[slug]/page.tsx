@@ -7,6 +7,7 @@
  * - 同时打印 Article JSON-LD，提升富媒体结果概率
  */
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
@@ -153,10 +154,18 @@ export default function BlogPostPage({
 
       {post.data.heroImage && (
         <figure className="mb-10 overflow-hidden rounded-xl border border-brand-100 bg-brand-50">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          {/*
+            文章 hero 用 1200x675 (16:9) 作为默认 intrinsic 尺寸 ——
+            实际渲染由 CSS 控制（max-w-3xl 容器 + h-auto w-full）。
+            priority 让 LCP 元素提前加载，next/image 会自动写 fetchpriority=high。
+          */}
+          <Image
             src={post.data.heroImage}
             alt={post.data.heroImageAlt ?? post.data.title}
+            width={1200}
+            height={675}
+            priority
+            sizes="(max-width: 768px) 100vw, 768px"
             className="h-auto w-full"
           />
           {post.data.heroImageAlt && (

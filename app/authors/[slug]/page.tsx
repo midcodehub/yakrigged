@@ -8,6 +8,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { Avatar } from '@/components/Avatar';
 import { BlogCard } from '@/components/BlogCard';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import {
@@ -77,14 +78,8 @@ export default function AuthorPage({ params }: { params: Params }) {
       <Breadcrumbs items={[{ label: 'Authors' }, { label: author.name }]} />
 
       <header className="mb-12 flex flex-col items-start gap-6 sm:flex-row">
-        {author.avatar && (
-          /* eslint-disable-next-line @next/next/no-img-element */
-          <img
-            src={author.avatar}
-            alt={author.name}
-            className="h-24 w-24 flex-none rounded-full border border-brand-200 bg-brand-50 object-cover"
-          />
-        )}
+        {/* 有头像走 next/image，没头像走 initials 占位 —— 都从 <Avatar /> 走 */}
+        <Avatar src={author.avatar} name={author.name} size={96} />
         <div>
           <p className="text-sm uppercase tracking-wider text-brand-600">
             Author profile

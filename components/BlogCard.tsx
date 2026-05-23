@@ -2,6 +2,7 @@
  * <BlogCard />
  * 用在 /blog 列表页 + 首页 "Latest articles" 区块。
  */
+import Image from 'next/image';
 import Link from 'next/link';
 import { FormattedDate } from './FormattedDate';
 import type { Post } from '@/lib/posts';
@@ -17,14 +18,19 @@ export function BlogCard({ post }: Props) {
   return (
     <article className="group flex flex-col overflow-hidden rounded-xl border border-brand-100 bg-white shadow-sm transition-shadow hover:shadow-md">
       {post.data.heroImage && (
-        <Link href={href} className="block aspect-[16/9] overflow-hidden bg-brand-50">
-          {/* 用原生 img 是为了支持外部任意 URL；如果你只用 next/image，可换成 <Image /> */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+        <Link
+          href={href}
+          // relative 是 next/image fill 模式的硬性要求；
+          // aspect-[16/9] 保证容器有确定的高度，避免 CLS。
+          className="relative block aspect-[16/9] overflow-hidden bg-brand-50"
+        >
+          <Image
             src={post.data.heroImage}
             alt={post.data.heroImageAlt ?? title}
-            loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            fill
+            // 列表是 1 / 2 / 3 列响应式网格，最大列宽约 384px
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 384px"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         </Link>
       )}

@@ -52,9 +52,35 @@ function MdxImage({ alt, width, height, ...rest }: ImageProps) {
   );
 }
 
+/**
+ * MDX 里 markdown 语法 ![alt](src) 会编译成 <img>。
+ * 我们 override 一下，强制注入 loading="lazy" + decoding="async"。
+ *
+ * 为什么不直接换成 next/image：markdown 语法没法表达 width/height，
+ * 而 next/image 必须有显式尺寸（或 fill+容器）才能用。所以这里仅做
+ * "保底懒加载" —— 想要全套 next/image 优化的作者改用 <Image /> JSX 即可。
+ */
+function MdxMarkdownImg({
+  alt,
+  ...rest
+}: ComponentPropsWithoutRef<'img'>) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      {...rest}
+      alt={alt ?? ''}
+      loading="lazy"
+      decoding="async"
+      className="rounded-lg"
+    />
+  );
+}
+
 export const mdxComponents = {
   a: MdxLink,
-  // Image 组件：MDX 里写 <Image src="..." alt="..." /> 会用这个
+  // markdown ![alt](src) 走这里，自动 lazy load
+  img: MdxMarkdownImg,
+  // MDX 里写 <Image src="..." alt="..." /> 走 next/image 全套优化
   Image: MdxImage,
   // 在 MDX 里直接 <AffiliateDisclosure /> 就能用
   AffiliateDisclosure,
