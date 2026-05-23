@@ -75,6 +75,76 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ===== Start Here / Hub callout =====
+          为什么放在 Hero 下面、Value Props 上面：
+          - 用户刚看完 hero 就遇到"这里有完整指南"，转化路径最短
+          - 给 hub page 一个来自 root（最高权重页面）的内链
+          - SEO 角度：root → hub → 7 spoke 是经典的权重传递链
+          视觉上故意区别于 BlogCard —— 这是 navigation 资产，不是文章列表项。 */}
+      <section
+        aria-labelledby="start-here-heading"
+        className="mt-16 overflow-hidden rounded-2xl border border-accent-500/30 bg-gradient-to-br from-brand-50 via-white to-accent-500/5 p-8 shadow-sm sm:p-10"
+      >
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+          <div className="max-w-2xl">
+            <p className="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-accent-600">
+              <span aria-hidden>📌</span>
+              <span>Start here</span>
+            </p>
+            <h2
+              id="start-here-heading"
+              className="text-2xl font-bold leading-tight text-ink-900 sm:text-3xl"
+            >
+              <Link
+                href="/blog/kayak-fish-finder-setup-complete-guide"
+                className="hover:text-brand-700 hover:underline"
+              >
+                Kayak Fish Finder Setup: The Complete Guide
+              </Link>
+            </h2>
+            <p className="mt-3 text-ink-700">
+              From bare kayak to fully-rigged electronics in one weekend.
+              Every step has a deep-dive linked — head unit, transducer
+              mount, battery sizing, waterproof box, cable routing, and
+              defeating midday glare.
+            </p>
+
+            {/* 7 步骤 chip 行——让用户在卡片内就感受到"这是个完整流程"，
+                不需要点击就能预览结构。每个 chip 不单独可点，统一引导到 hub。 */}
+            <ol className="mt-5 flex flex-wrap gap-2 text-sm">
+              {[
+                'Head unit',
+                'Transducer mount',
+                'Battery',
+                'Waterproof box',
+                'Wiring',
+                'Screen & glare',
+              ].map((step, i) => (
+                <li
+                  key={step}
+                  className="flex items-center gap-1.5 rounded-full border border-brand-200 bg-white px-3 py-1 text-ink-700"
+                >
+                  <span className="text-xs font-semibold text-accent-600">
+                    {i + 1}
+                  </span>
+                  <span>{step}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          <div className="flex-none">
+            <Link
+              href="/blog/kayak-fish-finder-setup-complete-guide"
+              className="inline-flex items-center gap-2 rounded-full bg-brand-700 px-5 py-3 font-semibold text-white shadow-sm transition-colors hover:bg-brand-600"
+            >
+              Read the complete guide
+              <span aria-hidden>→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ===== Value props (E-E-A-T) ===== */}
       <section className="mt-16">
         <h2 className="text-center text-2xl font-bold text-ink-900">
