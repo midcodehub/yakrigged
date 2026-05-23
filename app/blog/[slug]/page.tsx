@@ -17,6 +17,7 @@ import rehypeSlug from 'rehype-slug';
 import { FormattedDate } from '@/components/FormattedDate';
 import { BlogCard } from '@/components/BlogCard';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { NewsletterForm } from '@/components/NewsletterForm';
 import { mdxComponents } from '@/lib/mdx-components';
 import { SITE } from '@/lib/consts';
 import {
@@ -223,6 +224,18 @@ export default function BlogPostPage({
           </div>
         </section>
       )}
+
+      {/* Newsletter inline CTA —— 读者刚读完正文，订阅意向最高的时机 */}
+      <section
+        aria-label="Subscribe to YakRigged"
+        className="mt-12 rounded-2xl border border-brand-100 bg-brand-50/40 p-6 sm:p-8"
+      >
+        <NewsletterForm
+          source="article"
+          heading="Liked this? Get the next one in your inbox."
+          subheading="One email a week. Field-tested gear reviews & DIY rigs."
+        />
+      </section>
 
       {/* 标签 */}
       {post.data.tags.length > 0 && (

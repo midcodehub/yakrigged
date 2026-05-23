@@ -30,10 +30,12 @@ export const NAV_LINKS: ReadonlyArray<{ label: string; href: string }> = [
   { label: 'Gear Reviews', href: '/blog?category=reviews' },
   { label: 'How-To Guides', href: '/blog?category=guides' },
   { label: 'Search', href: '/search' },
+  { label: 'Subscribe', href: '/subscribe' },
   { label: 'About', href: '/about' },
 ];
 
 export const FOOTER_LINKS: ReadonlyArray<{ label: string; href: string }> = [
+  { label: 'Subscribe', href: '/subscribe' },
   { label: 'RSS', href: '/rss.xml' },
   { label: 'Sitemap', href: '/sitemap.xml' },
   { label: 'Privacy', href: '/privacy' },

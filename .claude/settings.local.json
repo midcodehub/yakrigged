@@ -8,7 +8,9 @@
       "mcp__github__list_commits",
       "Bash(npm run *)",
       "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'{len\\(d\\)} 条文章索引'\\); [print\\(f' · {x[\\\\\"slug\\\\\"]}'\\) for x in d]\")",
-      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'{len\\(d\\)} 篇文章已索引'\\)\")"
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'{len\\(d\\)} 篇文章已索引'\\)\")",
+      "WebSearch",
+      "Bash(npx tsc *)"
     ]
   }
 }

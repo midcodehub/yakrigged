@@ -13,6 +13,7 @@ import Image, { type ImageProps } from 'next/image';
 import Link from 'next/link';
 import type { ComponentPropsWithoutRef } from 'react';
 import { AffiliateDisclosure } from '@/components/AffiliateDisclosure';
+import { YouTube } from '@/components/YouTube';
 import { ProsCons } from '@/components/review/ProsCons';
 import { SpecsTable } from '@/components/review/SpecsTable';
 import { StarRating } from '@/components/review/StarRating';
@@ -84,6 +85,8 @@ export const mdxComponents = {
   Image: MdxImage,
   // 在 MDX 里直接 <AffiliateDisclosure /> 就能用
   AffiliateDisclosure,
+  // YouTube 视频嵌入：<YouTube id="..." title="..." caption="..." />
+  YouTube,
   // 评测内容专用组件
   ProsCons,
   SpecsTable,

@@ -11,6 +11,7 @@
  */
 import Link from 'next/link';
 import { SITE, FOOTER_LINKS } from '@/lib/consts';
+import { NewsletterForm } from './NewsletterForm';
 
 /**
  * 标准 RSS 图标 SVG（圆点 + 两条弧线）。
@@ -46,37 +47,25 @@ export function Footer() {
           <p className="mt-1 text-ink-500">{SITE.tagline}.</p>
         </div>
 
-        {/* Column 2 —— RSS 订阅块（核心新增）
-            为什么 RSS 还值得做：
-            - 内容创作者圈子（独立博客订阅者）转化率比 Twitter 高 5–10×
-            - Feedly / NetNewsWire / Reeder 用户对垂类博客忠诚度极高
-            - 是非常便宜的"建立读者关系"通道，零运营成本 */}
-        <div className="rounded-lg border border-brand-200 bg-white p-4 shadow-sm">
+        {/* Column 2 —— 订阅块（Newsletter 主 + RSS 副）
+            为什么 Newsletter 在前：邮件渠道受众规模是 RSS 的 10×+，
+            但保留 RSS 入口给那些已经活在 Feedly/Reeder 里的硬核读者。 */}
+        <div>
+          <NewsletterForm
+            source="footer"
+            heading="One email, every Monday"
+            subheading="New gear reviews & DIY rigs. No spam, no resold lists."
+          />
+
+          {/* RSS 二级入口：小字 + 图标，给已经用阅读器的硬核读者 */}
           <Link
             href="/rss.xml"
-            className="group flex items-center gap-3 text-ink-900"
-            // RSS feed 应该让浏览器和阅读器都可识别 —— 加 type 属性帮助某些阅读器
             type="application/rss+xml"
+            className="mt-3 inline-flex items-center gap-1.5 text-xs text-ink-500 hover:text-brand-700"
           >
-            <span
-              className="flex h-9 w-9 flex-none items-center justify-center rounded-md bg-accent-500 text-white transition-transform group-hover:scale-105"
-              aria-hidden
-            >
-              <RssIcon className="h-5 w-5" />
-            </span>
-            <span>
-              <span className="block font-semibold leading-tight group-hover:text-brand-700">
-                Subscribe via RSS
-              </span>
-              <span className="block text-xs text-ink-500">
-                New how-tos & gear reviews in your reader
-              </span>
-            </span>
+            <RssIcon className="h-3 w-3 text-accent-500" />
+            <span>or subscribe via RSS</span>
           </Link>
-          {/* 给硬核用户直接看到 feed URL，方便复制到阅读器 */}
-          <p className="mt-3 break-all rounded bg-brand-50 px-2 py-1 font-mono text-[11px] text-ink-500">
-            {SITE.url.replace(/\/$/, '')}/rss.xml
-          </p>
         </div>
 
         {/* Column 3 —— 二级导航 */}

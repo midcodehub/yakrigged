@@ -203,19 +203,29 @@ export default function HomePage() {
         )}
       </section>
 
-      {/* ===== CTA banner ===== */}
+      {/* ===== CTA banner —— Newsletter 主，RSS 副 =====
+          为什么这里不内联表单：深色背景上 input 配色复杂；
+          点击跳 /subscribe 也方便统一管理订阅页样式。 */}
       <section className="mt-20 rounded-2xl bg-ink-900 px-6 py-10 text-center text-white sm:px-12">
         <h2 className="text-2xl font-bold">New gear review every week.</h2>
         <p className="mx-auto mt-2 max-w-xl text-ink-500/90">
-          Subscribe via RSS — we&apos;ll never sell your email because we
-          don&apos;t ask for it.
+          Get the next one in your inbox — one email Monday morning, no
+          spam, unsubscribe anytime.
         </p>
-        <Link
-          href="/rss.xml"
-          className="mt-5 inline-block rounded-full bg-accent-500 px-5 py-3 font-semibold text-white hover:bg-accent-600"
-        >
-          Grab the RSS feed
-        </Link>
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+          <Link
+            href="/subscribe"
+            className="rounded-full bg-accent-500 px-5 py-3 font-semibold text-white hover:bg-accent-600"
+          >
+            Join the newsletter →
+          </Link>
+          <Link
+            href="/rss.xml"
+            className="rounded-full border border-white/30 px-5 py-3 font-semibold text-white/90 hover:bg-white/10"
+          >
+            or grab the RSS feed
+          </Link>
+        </div>
       </section>
     </>
   );
