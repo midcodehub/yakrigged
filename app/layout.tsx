@@ -4,6 +4,8 @@
  * - 通过 metadata API 配置默认 SEO（页面级 metadata 会自动合并/覆盖这里）
  */
 import type { Metadata, Viewport } from 'next';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { SITE } from '@/lib/consts';
@@ -82,6 +84,15 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+
+        {/*
+          Vercel Analytics（PV/UV、来源、设备）+ Speed Insights（Core Web Vitals）
+          - 都是 no-cookie / GDPR-friendly，不需要 consent banner
+          - 仅在 Vercel 生产环境注入脚本；本地 dev 自动关闭，不会污染数据
+          - 必须在 Vercel Dashboard → Analytics / Speed Insights tab 里点开关启用一次
+        */}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
