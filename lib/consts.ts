@@ -12,7 +12,7 @@ export const SITE = {
   tagline: 'Kayak Fishing Gear, Reviewed by People Who Actually Paddle',
   /** 默认 meta description（首页 + 缺省 fallback） */
   description:
-    'YakRigged 是面向独木舟/皮划艇钓鱼爱好者（kayak anglers）的装备评测、玩法教程与水域指南站点。我们独立测试 rod holders、fish finders、PFDs、paddles 等装备，帮你做出更好的购买决定。',
+    'Independent kayak fishing gear reviews, rigging guides, and destination notes. We test rod holders, fish finders, PFDs, paddles and more on real water — so you can make better buying decisions.',
   /** 站点正式域名（部署到 Vercel 后请替换为自己的域名） */
   url:
     process.env.NEXT_PUBLIC_SITE_URL ?? 'https://yakrigged.com',

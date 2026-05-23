@@ -34,6 +34,9 @@ export function organizationSchema() {
     url: BASE,
     logo: absUrl('/favicon.svg'),
     description: SITE.description,
+    sameAs: [
+      // 添加社交媒体链接后在这里补充，帮助 Knowledge Graph 关联
+    ],
   };
 }
 
@@ -47,6 +50,12 @@ export function websiteSearchSchema() {
     '@type': 'WebSite',
     name: SITE.name,
     url: BASE,
+    description: SITE.description,
+    publisher: {
+      '@type': 'Organization',
+      name: SITE.name,
+      url: BASE,
+    },
     potentialAction: {
       '@type': 'SearchAction',
       target: {
@@ -62,6 +71,10 @@ export function websiteSearchSchema() {
  * Article + Review 复合 schema
  * 评测文章既要用 Article 保证基础富媒体，
  * 又要用 Review（嵌套在 itemReviewed 里）触发星级 rich result。
+ *
+ * 增强：
+ *  - speakable: 标记 headline + description 可被语音助手朗读（GEO 信号）
+ *  - isPartOf: 关联到 WebSite，帮助 AI 理解站点结构
  */
 export function articleAndReviewSchema(post: Post): JsonLd[] {
   const url = absUrl(`/blog/${post.slug}`);
@@ -85,6 +98,17 @@ export function articleAndReviewSchema(post: Post): JsonLd[] {
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     keywords: post.data.tags.join(', '),
+    // Speakable: 告诉语音助手和 AI 哪些部分最适合朗读/引用
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['article h1', 'article > header p'],
+    },
+    // 关联到站点整体
+    isPartOf: {
+      '@type': 'WebSite',
+      name: SITE.name,
+      url: BASE,
+    },
   };
 
   if (!post.data.review) return [article];
@@ -153,5 +177,45 @@ export function faqSchema(items: FAQItem[]) {
         text: item.a,
       },
     })),
+  };
+}
+
+/**
+ * ItemList —— 博客列表页用，帮助 Google 显示 carousel 富媒体
+ * 也让 AI 搜索引擎理解"这是一组相关文章"
+ */
+export function itemListSchema(posts: { slug: string; data: { title: string } }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: posts.map((post, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: post.data.title,
+      url: absUrl(`/blog/${post.slug}`),
+    })),
+  };
+}
+
+/**
+ * CollectionPage —— 标签/分类聚合页用
+ * 帮助搜索引擎理解这是一个主题集合而非独立内容
+ */
+export function collectionPageSchema(opts: {
+  name: string;
+  description: string;
+  url: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: opts.name,
+    description: opts.description,
+    url: absUrl(opts.url),
+    isPartOf: {
+      '@type': 'WebSite',
+      name: SITE.name,
+      url: BASE,
+    },
   };
 }

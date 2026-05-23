@@ -39,7 +39,7 @@ export function Footer() {
 
   return (
     <footer className="mt-16 border-t border-brand-100 bg-brand-50/40">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-3 sm:items-start">
+      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-4 sm:items-start">
         {/* Column 1 —— 品牌 + 版权 */}
         <div className="text-sm text-ink-700">
           <p className="text-base font-semibold text-brand-700">{SITE.name}</p>
@@ -47,9 +47,36 @@ export function Footer() {
           <p className="mt-1 text-ink-500">{SITE.tagline}.</p>
         </div>
 
-        {/* Column 2 —— 订阅块（Newsletter 主 + RSS 副）
-            为什么 Newsletter 在前：邮件渠道受众规模是 RSS 的 10×+，
-            但保留 RSS 入口给那些已经活在 Feedly/Reeder 里的硬核读者。 */}
+        {/* Column 2 —— 内容分类（SEO 内链：每个页面都链到分类页） */}
+        <nav aria-label="Content categories">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-ink-500">
+            Content
+          </p>
+          <ul className="flex flex-col gap-2 text-sm">
+            <li>
+              <Link href="/blog?category=reviews" className="text-ink-700 hover:text-brand-700 hover:underline">
+                Gear Reviews
+              </Link>
+            </li>
+            <li>
+              <Link href="/blog?category=guides" className="text-ink-700 hover:text-brand-700 hover:underline">
+                How-To Guides
+              </Link>
+            </li>
+            <li>
+              <Link href="/blog?category=destinations" className="text-ink-700 hover:text-brand-700 hover:underline">
+                Destinations
+              </Link>
+            </li>
+            <li>
+              <Link href="/blog" className="text-ink-700 hover:text-brand-700 hover:underline">
+                All Articles
+              </Link>
+            </li>
+          </ul>
+        </nav>
+
+        {/* Column 3 —— 订阅块 */}
         <div>
           <NewsletterForm
             source="footer"
@@ -57,7 +84,6 @@ export function Footer() {
             subheading="New gear reviews & DIY rigs. No spam, no resold lists."
           />
 
-          {/* RSS 二级入口：小字 + 图标，给已经用阅读器的硬核读者 */}
           <Link
             href="/rss.xml"
             type="application/rss+xml"
@@ -68,7 +94,7 @@ export function Footer() {
           </Link>
         </div>
 
-        {/* Column 3 —— 二级导航 */}
+        {/* Column 4 —— 二级导航 */}
         <nav aria-label="Footer" className="sm:justify-self-end">
           <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-ink-500">
             Explore

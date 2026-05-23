@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/about`, changeFrequency: 'yearly', priority: 0.5 },
     { url: `${base}/search`, changeFrequency: 'monthly', priority: 0.3 },
     { url: `${base}/subscribe`, changeFrequency: 'yearly', priority: 0.4 },
+    { url: `${base}/llms.txt`, changeFrequency: 'monthly', priority: 0.2 },
   ];
 
   const postUrls: MetadataRoute.Sitemap = getAllPosts().map((post) => ({

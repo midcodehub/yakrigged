@@ -4,12 +4,19 @@
  * - 通过 metadata API 配置默认 SEO（页面级 metadata 会自动合并/覆盖这里）
  */
 import type { Metadata, Viewport } from 'next';
+import { Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { SITE } from '@/lib/consts';
 import './globals.css';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
   // metadataBase 决定 og:image / canonical 等相对路径如何展开成绝对 URL
@@ -40,6 +47,7 @@ export const metadata: Metadata = {
     canonical: '/',
     types: {
       'application/rss+xml': [{ url: '/rss.xml', title: `${SITE.name} RSS` }],
+      'text/plain': [{ url: '/llms.txt', title: `${SITE.name} LLM Context` }],
     },
   },
   icons: {
@@ -66,13 +74,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      {/* 通过 rsms.me/inter 自托管的 Inter，可后续换成 next/font/google */}
-      <head>
-        <link rel="preconnect" href="https://rsms.me/" />
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-      </head>
-      <body className="min-h-screen bg-white text-ink-900 antialiased">
+    <html lang="en" className={inter.variable}>
+      <head />
+      <body className="min-h-screen bg-white font-sans text-ink-900 antialiased">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-brand-700 focus:px-3 focus:py-1.5 focus:text-white"

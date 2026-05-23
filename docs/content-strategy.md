@@ -1,0 +1,212 @@
+# YakRigged Content Strategy: Topic Clusters
+
+> 基于 Hub & Spoke 模型的内容规划框架。每个 cluster 有一个 hub（综合指南）和多个 spoke（深度子话题），通过内链形成权重传递网络。
+
+---
+
+## 当前 Cluster 状态
+
+### Cluster 1: Kayak Fish Finder Setup ✅ (已建立)
+
+**Hub**: `/blog/kayak-fish-finder-setup-complete-guide`
+
+| Spoke | Status | Slug |
+|-------|--------|------|
+| Best fish finders for kayaks | ✅ | `best-fish-finders-for-kayaks-2026` |
+| Transducer mount (no-drill) | ✅ | `best-no-drill-transducer-mount-for-kayaks` |
+| Mount transducer inside hull | ✅ | `can-you-mount-a-fish-finder-transducer-inside-a-kayak` |
+| LiFePO4 battery for LiveScope | ✅ | `best-lifepo4-battery-for-garmin-livescope-kayak` |
+| Waterproof electronics box | ✅ | `diy-waterproof-kayak-electronics-box` |
+| Wire routing | ✅ | `how-to-run-wires-in-a-kayak-for-a-fish-finder` |
+| Screen glare fix | ✅ | `how-to-fix-fish-finder-screen-glare-on-kayak` |
+
+**内链规则**: Hub 链到所有 spoke，每个 spoke 链回 hub + 相邻 spoke。
+
+---
+
+## 规划中的 Clusters
+
+### Cluster 2: Kayak Rigging & Accessories
+
+**Hub (待写)**: "How to Rig a Fishing Kayak: The Complete Setup Guide"
+- Slug: `how-to-rig-a-fishing-kayak-complete-guide`
+- 目标关键词: "how to rig a fishing kayak", "kayak fishing setup"
+
+| Spoke | Priority | Target Keyword |
+|-------|----------|---------------|
+| Rod holders (已有) | ✅ | "flush mount rod holders kayak" |
+| Anchor trolley install | 🔴 High | "kayak anchor trolley" |
+| Crate & milk crate rigging | 🔴 High | "kayak fishing crate setup" |
+| Paddle holder options | 🟡 Med | "kayak paddle holder" |
+| Kayak seat upgrade | 🟡 Med | "best kayak fishing seat" |
+| DIY kayak cart | 🟢 Low | "diy kayak cart" |
+| Kayak lighting (night fishing) | 🟢 Low | "kayak navigation lights" |
+
+### Cluster 3: Kayak Safety & PFDs
+
+**Hub (待写)**: "Kayak Fishing Safety: PFDs, Gear & Rules You Need to Know"
+- Slug: `kayak-fishing-safety-guide`
+- 目标关键词: "kayak fishing safety", "best PFD for kayak fishing"
+
+| Spoke | Priority | Target Keyword |
+|-------|----------|---------------|
+| Best PFDs for kayak fishing | 🔴 High | "best life jacket kayak fishing" |
+| Kayak stability & self-rescue | 🔴 High | "kayak self rescue technique" |
+| Cold water kayak fishing gear | 🟡 Med | "cold water kayak fishing" |
+| Kayak fishing in wind/current | 🟡 Med | "kayak fishing windy conditions" |
+| Kayak visibility gear | 🟢 Low | "kayak safety flag" |
+
+### Cluster 4: Kayak Fishing Techniques
+
+**Hub (待写)**: "Kayak Fishing for Beginners: Techniques That Work from a Yak"
+- Slug: `kayak-fishing-techniques-beginners`
+- 目标关键词: "kayak fishing tips", "kayak fishing for beginners"
+
+| Spoke | Priority | Target Keyword |
+|-------|----------|---------------|
+| Trolling from a kayak | 🔴 High | "how to troll from a kayak" |
+| Anchoring techniques | 🔴 High | "how to anchor a kayak for fishing" |
+| Sight fishing from kayak | 🟡 Med | "sight fishing kayak" |
+| Kayak fly fishing setup | 🟡 Med | "fly fishing from kayak" |
+| Landing big fish from kayak | 🟡 Med | "landing fish from kayak" |
+| Kayak fishing in current | 🟢 Low | "river kayak fishing tips" |
+
+### Cluster 5: Best Kayaks for Fishing (Comparison)
+
+**Hub (待写)**: "Best Fishing Kayaks in 2026: Tested & Compared"
+- Slug: `best-fishing-kayaks-2026`
+- 目标关键词: "best fishing kayak", "fishing kayak reviews"
+
+| Spoke | Priority | Target Keyword |
+|-------|----------|---------------|
+| Best pedal kayaks for fishing | 🔴 High | "best pedal fishing kayak" |
+| Best budget fishing kayaks | 🔴 High | "best fishing kayak under 1000" |
+| Sit-on-top vs sit-in for fishing | 🟡 Med | "sit on top vs sit in kayak fishing" |
+| Best tandem fishing kayaks | 🟡 Med | "best tandem fishing kayak" |
+| Inflatable fishing kayaks | 🟢 Low | "inflatable fishing kayak review" |
+
+---
+
+## 内容优先级矩阵
+
+按 **搜索量 × 竞争难度 × 商业价值** 排序：
+
+| 优先级 | 文章 | 理由 |
+|--------|------|------|
+| 1 | Cluster 2 Hub (rigging guide) | 高搜索量 + 已有 spoke 可链接 |
+| 2 | Best PFDs for kayak fishing | 高商业价值（affiliate）+ 低竞争 |
+| 3 | Anchor trolley install | 高搜索量 + 实操内容 AI 爱引用 |
+| 4 | Cluster 5 Hub (best kayaks) | 极高搜索量但竞争激烈 |
+| 5 | Trolling from a kayak | 技巧类内容 AI 引用率高 |
+
+---
+
+## 内容模板
+
+### Review 文章模板
+
+```mdx
+---
+title: "Best [Product] for Kayak Fishing in [Year]: Field-Tested"
+description: "We tested [N] [products] on [N] kayaks over [N] hours. Here are our picks."
+category: reviews
+review:
+  productName: "[Winner]"
+  brand: "[Brand]"
+  rating: [N]
+  price: { currency: USD, amount: [N] }
+faq:
+  - q: "[Natural language question]?"
+    a: "[40-60 word answer with specific data]"
+---
+
+<AffiliateDisclosure />
+
+<VerdictBox productName="..." rating={N} bestFor="..." skipIf="..." price="..." buyUrl="..." />
+
+<KeyTakeaway>
+[40-60 word core conclusion with specific data point]
+</KeyTakeaway>
+
+## TL;DR — Our top picks
+
+| Use case | Winner | Why |
+| --- | --- | --- |
+| Best overall | ... | ... |
+| Best budget | ... | ... |
+| Best for [specific use] | ... | ... |
+
+## How we tested
+
+<StatBlock value="[N] hours" label="total on-water testing time" source="[Month Year]" />
+
+[Testing methodology paragraph]
+
+## 1. [Winner] — our pick
+
+<ExpertQuote name="[Author]" title="[Title], YakRigged" source="Field testing, [Month Year]">
+[Specific observation with data]
+</ExpertQuote>
+
+[Detailed review...]
+```
+
+### How-To Guide 模板
+
+```mdx
+---
+title: "How to [Action]: Step-by-Step Guide for Kayak Anglers"
+description: "A step-by-step guide to [action] — [specific detail] — with [credibility signal]."
+category: guides
+faq:
+  - q: "[Question phrased as user would ask AI]?"
+    a: "[Self-contained answer]"
+---
+
+<KeyTakeaway>
+[Core answer to the "how to" question in 40-60 words]
+</KeyTakeaway>
+
+## What you'll need
+
+[Materials/tools list]
+
+## Step 1 — [Action verb + object]
+
+[Instructions with specific measurements/data]
+
+<StatBlock value="[measurement]" label="[what it measures]" source="[how measured]" />
+
+## Step 2 — [Action verb + object]
+
+...
+
+## Common mistakes
+
+[Numbered list of pitfalls]
+
+## FAQ
+
+[Rendered from frontmatter faq array]
+```
+
+---
+
+## 发布节奏建议
+
+| 频率 | 内容类型 | 目标 |
+|------|---------|------|
+| 每周 1 篇 | Spoke 文章 | 填充 cluster，积累长尾流量 |
+| 每月 1 篇 | Hub 综合指南 | 建立主题权威 |
+| 每季度 | 更新已有 hub | 保持 freshness 信号 |
+| 持续 | 给旧文章加 GEO 组件 | 提升 AI 引用率 |
+
+---
+
+## 下一步行动
+
+1. ✍️ 写 Cluster 2 Hub（rigging guide）— 链接已有的 rod holders spoke
+2. ✍️ 写 "Best PFDs for Kayak Fishing" — 高 affiliate 价值
+3. 🔄 给现有 10 篇文章补充 `<KeyTakeaway>` 和 `<ExpertQuote>` 组件
+4. 📊 设置 Google Search Console 监控 AI Overview 出现率
+5. 🔗 确保每篇新文章至少链接 2 篇站内文章 + 被 hub 链接

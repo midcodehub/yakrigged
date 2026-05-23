@@ -18,6 +18,7 @@ import { ProsCons } from '@/components/review/ProsCons';
 import { SpecsTable } from '@/components/review/SpecsTable';
 import { StarRating } from '@/components/review/StarRating';
 import { VerdictBox } from '@/components/review/VerdictBox';
+import { KeyTakeaway, ExpertQuote, StatBlock } from '@/components/geo';
 
 function MdxLink({
   href,
@@ -92,4 +93,8 @@ export const mdxComponents = {
   SpecsTable,
   StarRating,
   VerdictBox,
+  // GEO 组件：帮助 AI 搜索引擎提取和引用内容
+  KeyTakeaway,
+  ExpertQuote,
+  StatBlock,
 };

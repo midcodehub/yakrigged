@@ -9,12 +9,15 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BlogCard } from '@/components/BlogCard';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 import {
   getAllPosts,
+  getAllTags,
   getCategoryCounts,
   getPostsByCategory,
 } from '@/lib/posts';
 import { CATEGORIES, type Category } from '@/lib/consts';
+import { collectionPageSchema, itemListSchema } from '@/lib/schema';
 
 interface SearchParams {
   category?: string;
@@ -67,7 +70,37 @@ export default function BlogIndexPage({
 
   return (
     <>
+      {/* Schema.org: ItemList for carousel + CollectionPage for AI context */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(itemListSchema(posts)),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            collectionPageSchema({
+              name: cat
+                ? `${cat[0].toUpperCase() + cat.slice(1)} — YakRigged Blog`
+                : 'YakRigged Blog',
+              description: cat
+                ? `All ${cat} articles on YakRigged — kayak fishing gear, tested and reviewed by anglers.`
+                : 'Kayak fishing gear reviews, how-to guides, and destination notes from the YakRigged team.',
+              url: cat ? `/blog?category=${cat}` : '/blog',
+            }),
+          ),
+        }}
+      />
       <header className="mb-10">
+        <Breadcrumbs
+          items={
+            cat
+              ? [{ label: 'Blog', href: '/blog' }, { label: cat }]
+              : [{ label: 'Blog' }]
+          }
+        />
         <h1 className="text-3xl font-bold text-ink-900 sm:text-4xl">
           The YakRigged Blog
         </h1>
@@ -115,6 +148,27 @@ export default function BlogIndexPage({
           ))}
         </div>
       )}
+
+      {/* Popular topics — internal linking for SEO crawl depth + topic signals */}
+      <section className="mt-16 border-t border-brand-100 pt-8">
+        <h2 className="mb-4 text-lg font-bold text-ink-900">
+          Popular topics
+        </h2>
+        <div className="flex flex-wrap gap-2">
+          {getAllTags()
+            .slice(0, 15)
+            .map((t) => (
+              <Link
+                key={t.slug}
+                href={`/blog/tag/${t.slug}`}
+                className="rounded-full border border-brand-200 px-3 py-1.5 text-sm text-brand-700 hover:bg-brand-50"
+              >
+                #{t.tag}
+                <span className="ml-1 text-xs opacity-60">({t.count})</span>
+              </Link>
+            ))}
+        </div>
+      </section>
     </>
   );
 }

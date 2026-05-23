@@ -39,6 +39,19 @@ export default function TagPage({ params }: { params: Params }) {
   if (!tag) notFound();
   const posts = getPostsByTag(params.tag);
 
+  // Find related tags: tags that co-occur with this tag in the same articles
+  const relatedTagSlugs = new Set<string>();
+  for (const post of posts) {
+    for (const t of post.data.tags) {
+      const slug = t.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+      if (slug !== params.tag) relatedTagSlugs.add(slug);
+    }
+  }
+  const allTags = getAllTags();
+  const relatedTags = allTags
+    .filter((t) => relatedTagSlugs.has(t.slug))
+    .slice(0, 8);
+
   return (
     <>
       <Breadcrumbs
@@ -67,6 +80,26 @@ export default function TagPage({ params }: { params: Params }) {
           <BlogCard key={p.slug} post={p} />
         ))}
       </div>
+
+      {/* Related tags — cross-linking for crawl depth and topic clustering */}
+      {relatedTags.length > 0 && (
+        <section className="mt-12 border-t border-brand-100 pt-6">
+          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-ink-500">
+            Related topics
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {relatedTags.map((t) => (
+              <Link
+                key={t.slug}
+                href={`/blog/tag/${t.slug}`}
+                className="rounded-full border border-brand-200 px-3 py-1 text-sm text-brand-700 hover:bg-brand-50"
+              >
+                #{t.tag}
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
     </>
   );
 }
