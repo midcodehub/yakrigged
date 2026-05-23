@@ -1,0 +1,88 @@
+/**
+ * 根 layout —— 所有页面共享。
+ * - 注入全局 CSS、Header、Footer
+ * - 通过 metadata API 配置默认 SEO（页面级 metadata 会自动合并/覆盖这里）
+ */
+import type { Metadata, Viewport } from 'next';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
+import { SITE } from '@/lib/consts';
+import './globals.css';
+
+export const metadata: Metadata = {
+  // metadataBase 决定 og:image / canonical 等相对路径如何展开成绝对 URL
+  metadataBase: new URL(SITE.url),
+  title: {
+    default: SITE.name,
+    template: `%s — ${SITE.name}`,
+  },
+  description: SITE.description,
+  applicationName: SITE.name,
+  authors: [{ name: SITE.author }],
+  openGraph: {
+    type: 'website',
+    siteName: SITE.name,
+    title: SITE.name,
+    description: SITE.description,
+    url: SITE.url,
+    locale: SITE.locale.replace('-', '_'),
+    images: [SITE.defaultOgImage],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: SITE.name,
+    description: SITE.description,
+    images: [SITE.defaultOgImage],
+  },
+  alternates: {
+    canonical: '/',
+    types: {
+      'application/rss+xml': [{ url: '/rss.xml', title: `${SITE.name} RSS` }],
+    },
+  },
+  icons: {
+    icon: '/favicon.svg',
+  },
+  // 站长平台验证（值为空时 Next.js 会自动省略对应 meta 标签）
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+      : undefined,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: '#1f7065',
+  width: 'device-width',
+  initialScale: 1,
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      {/* 通过 rsms.me/inter 自托管的 Inter，可后续换成 next/font/google */}
+      <head>
+        <link rel="preconnect" href="https://rsms.me/" />
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+      </head>
+      <body className="min-h-screen bg-white text-ink-900 antialiased">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-brand-700 focus:px-3 focus:py-1.5 focus:text-white"
+        >
+          Skip to content
+        </a>
+        <Header />
+        <main id="main" className="mx-auto w-full max-w-6xl px-4 py-10">
+          {children}
+        </main>
+        <Footer />
+      </body>
+    </html>
+  );
+}

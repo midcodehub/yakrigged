@@ -1,0 +1,56 @@
+/* Tailwind v4：一行 @import 即可启用全部默认能力 */
+@import "tailwindcss";
+
+/* 启用官方 Typography 插件，用于 MDX 正文 .prose 渲染 */
+@plugin "@tailwindcss/typography";
+
+/* ============================================================
+ * Design tokens (Tailwind v4 用 @theme 直接生成 --color-* 变量)
+ * 模板里可以用 bg-brand-600 / text-brand-50 等类名
+ * ============================================================ */
+@theme {
+  /* 品牌色：偏深的湖水蓝绿 */
+  --color-brand-50:  #eff8f6;
+  --color-brand-100: #d6efe9;
+  --color-brand-200: #aedfd3;
+  --color-brand-300: #7cc8b6;
+  --color-brand-400: #4aaa97;
+  --color-brand-500: #2d8c7c;
+  --color-brand-600: #1f7065;
+  --color-brand-700: #195a52;
+  --color-brand-800: #144841;
+  --color-brand-900: #0f3833;
+
+  /* 强调色：日落橙，用于 CTA */
+  --color-accent-500: #f08a3e;
+  --color-accent-600: #d97323;
+
+  /* 中性色 */
+  --color-ink-900: #0b1220;
+  --color-ink-700: #2a3344;
+  --color-ink-500: #5b667a;
+
+  /* 字体栈 */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Source Serif Pro", ui-serif, Georgia, Cambria, serif;
+}
+
+/* ============================================================
+ * 全局基础
+ * ============================================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-500);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

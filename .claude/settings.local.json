@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npm install *)",
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(npm config *)"
+    ]
+  }
+}

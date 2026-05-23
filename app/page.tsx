@@ -1,0 +1,136 @@
+/**
+ * 首页 (/)
+ * -----------------------------
+ * 结构：
+ *  1. Hero（价值主张 + 两个 CTA）
+ *  2. "Why YakRigged" 三栏（E-E-A-T 信号）
+ *  3. Latest Articles：最新 6 篇
+ *  4. CTA banner：引导订阅 RSS
+ *
+ * 这是 RSC，所有 getAllPosts() 在构建时跑一次。
+ */
+import Link from 'next/link';
+import { BlogCard } from '@/components/BlogCard';
+import { getAllPosts } from '@/lib/posts';
+import { SITE } from '@/lib/consts';
+
+export default function HomePage() {
+  const latestPosts = getAllPosts().slice(0, 6);
+
+  return (
+    <>
+      {/* ===== Hero ===== */}
+      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-700 via-brand-600 to-brand-500 px-6 py-16 text-white shadow-lg sm:px-12 sm:py-20">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-10 -top-10 h-72 w-72 rounded-full bg-brand-300/20 blur-3xl"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-16 -left-16 h-80 w-80 rounded-full bg-accent-500/20 blur-3xl"
+        />
+
+        <div className="relative max-w-3xl">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-brand-100">
+            Kayak Anglers · Independent Reviews
+          </p>
+          <h1 className="text-4xl font-bold leading-tight sm:text-5xl">
+            Get rigged. Get on the water. Catch more fish.
+          </h1>
+          <p className="mt-4 max-w-2xl text-lg text-brand-50">
+            {SITE.tagline}. We test rod holders, fish finders, PFDs and paddles
+            ourselves — so you can spend less time researching and more time
+            catching.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              href="/blog"
+              className="rounded-full bg-accent-500 px-5 py-3 font-semibold text-white shadow-sm transition-colors hover:bg-accent-600"
+            >
+              Read the latest reviews →
+            </Link>
+            <Link
+              href="/blog?category=guides"
+              className="rounded-full border border-white/40 px-5 py-3 font-semibold text-white transition-colors hover:bg-white/10"
+            >
+              Browse how-to guides
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== Value props (E-E-A-T) ===== */}
+      <section className="mt-16">
+        <h2 className="text-center text-2xl font-bold text-ink-900">
+          Why anglers read YakRigged
+        </h2>
+        <div className="mt-8 grid gap-6 sm:grid-cols-3">
+          <div className="rounded-xl border border-brand-100 p-6">
+            <p className="text-3xl">🎣</p>
+            <h3 className="mt-2 font-semibold text-ink-900">Real water testing</h3>
+            <p className="mt-1 text-sm text-ink-700">
+              Every product we review gets at least 10 hours on the water — no
+              desk-only roundups.
+            </p>
+          </div>
+          <div className="rounded-xl border border-brand-100 p-6">
+            <p className="text-3xl">📏</p>
+            <h3 className="mt-2 font-semibold text-ink-900">Specs you actually need</h3>
+            <p className="mt-1 text-sm text-ink-700">
+              Beam, weight capacity, hatch dimensions, real battery life —
+              measured, not copy-pasted from the brand page.
+            </p>
+          </div>
+          <div className="rounded-xl border border-brand-100 p-6">
+            <p className="text-3xl">💰</p>
+            <h3 className="mt-2 font-semibold text-ink-900">Independent, ad-light</h3>
+            <p className="mt-1 text-sm text-ink-700">
+              We disclose every affiliate link. Brands don&apos;t get to preview
+              reviews before publication.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== Latest articles ===== */}
+      <section className="mt-20">
+        <div className="mb-6 flex items-end justify-between">
+          <h2 className="text-2xl font-bold text-ink-900">Latest articles</h2>
+          <Link
+            href="/blog"
+            className="text-sm font-semibold text-brand-700 hover:underline"
+          >
+            View all →
+          </Link>
+        </div>
+
+        {latestPosts.length === 0 ? (
+          <p className="rounded-lg border border-dashed border-brand-200 p-8 text-center text-ink-500">
+            No articles yet. Check back soon — first reviews land this week.
+          </p>
+        ) : (
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {latestPosts.map((post) => (
+              <BlogCard key={post.slug} post={post} />
+            ))}
+          </div>
+        )}
+      </section>
+
+      {/* ===== CTA banner ===== */}
+      <section className="mt-20 rounded-2xl bg-ink-900 px-6 py-10 text-center text-white sm:px-12">
+        <h2 className="text-2xl font-bold">New gear review every week.</h2>
+        <p className="mx-auto mt-2 max-w-xl text-ink-500/90">
+          Subscribe via RSS — we&apos;ll never sell your email because we
+          don&apos;t ask for it.
+        </p>
+        <Link
+          href="/rss.xml"
+          className="mt-5 inline-block rounded-full bg-accent-500 px-5 py-3 font-semibold text-white hover:bg-accent-600"
+        >
+          Grab the RSS feed
+        </Link>
+      </section>
+    </>
+  );
+}
