@@ -8,6 +8,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { BlogCard } from '@/components/BlogCard';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 import {
   findTagBySlug,
   getAllTags,
@@ -40,6 +41,12 @@ export default function TagPage({ params }: { params: Params }) {
 
   return (
     <>
+      <Breadcrumbs
+        items={[
+          { label: 'Blog', href: '/blog' },
+          { label: `#${tag}` },
+        ]}
+      />
       <header className="mb-10">
         <p className="text-sm uppercase tracking-wider text-brand-600">
           Tag archive

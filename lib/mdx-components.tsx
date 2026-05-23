@@ -13,6 +13,10 @@ import Image, { type ImageProps } from 'next/image';
 import Link from 'next/link';
 import type { ComponentPropsWithoutRef } from 'react';
 import { AffiliateDisclosure } from '@/components/AffiliateDisclosure';
+import { ProsCons } from '@/components/review/ProsCons';
+import { SpecsTable } from '@/components/review/SpecsTable';
+import { StarRating } from '@/components/review/StarRating';
+import { VerdictBox } from '@/components/review/VerdictBox';
 
 function MdxLink({
   href,
@@ -54,4 +58,9 @@ export const mdxComponents = {
   Image: MdxImage,
   // 在 MDX 里直接 <AffiliateDisclosure /> 就能用
   AffiliateDisclosure,
+  // 评测内容专用组件
+  ProsCons,
+  SpecsTable,
+  StarRating,
+  VerdictBox,
 };

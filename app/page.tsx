@@ -13,12 +13,28 @@ import Link from 'next/link';
 import { BlogCard } from '@/components/BlogCard';
 import { getAllPosts } from '@/lib/posts';
 import { SITE } from '@/lib/consts';
+import { organizationSchema, websiteSearchSchema } from '@/lib/schema';
 
 export default function HomePage() {
   const latestPosts = getAllPosts().slice(0, 6);
 
   return (
     <>
+      {/* 站点级 Schema.org —— Organization + WebSite/SearchAction
+          注入到首页（最权威页面），让 Google Knowledge Graph 抓得到。 */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationSchema()),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(websiteSearchSchema()),
+        }}
+      />
+
       {/* ===== Hero ===== */}
       <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-700 via-brand-600 to-brand-500 px-6 py-16 text-white shadow-lg sm:px-12 sm:py-20">
         <div

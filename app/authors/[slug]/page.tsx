@@ -9,6 +9,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { BlogCard } from '@/components/BlogCard';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 import {
   getAllAuthors,
   getPostsByAuthor,
@@ -72,6 +73,8 @@ export default function AuthorPage({ params }: { params: Params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
+
+      <Breadcrumbs items={[{ label: 'Authors' }, { label: author.name }]} />
 
       <header className="mb-12 flex flex-col items-start gap-6 sm:flex-row">
         {author.avatar && (

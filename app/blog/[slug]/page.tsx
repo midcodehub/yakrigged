@@ -15,6 +15,7 @@ import rehypeSlug from 'rehype-slug';
 
 import { FormattedDate } from '@/components/FormattedDate';
 import { BlogCard } from '@/components/BlogCard';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { mdxComponents } from '@/lib/mdx-components';
 import { SITE } from '@/lib/consts';
 import {
@@ -23,9 +24,9 @@ import {
   getAllSlugs,
   getPostBySlug,
   tagToSlug,
-  type Post,
 } from '@/lib/posts';
 import { getAuthorByName } from '@/lib/authors';
+import { articleAndReviewSchema, faqSchema } from '@/lib/schema';
 
 /** 让 Next.js 构建时为每个 slug 生成静态 HTML */
 export function generateStaticParams() {
@@ -67,35 +68,6 @@ export function generateMetadata({
   };
 }
 
-/** 构造 schema.org/Article JSON-LD（Google 富媒体卡片用） */
-function articleJsonLd(post: Post) {
-  const url = new URL(`/blog/${post.slug}`, SITE.url).toString();
-  const image = post.data.heroImage
-    ? new URL(post.data.heroImage, SITE.url).toString()
-    : new URL(SITE.defaultOgImage, SITE.url).toString();
-
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: post.data.title,
-    description: post.data.description,
-    image: [image],
-    datePublished: post.data.pubDate.toISOString(),
-    dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
-    author: { '@type': 'Person', name: post.data.author },
-    publisher: {
-      '@type': 'Organization',
-      name: SITE.name,
-      logo: {
-        '@type': 'ImageObject',
-        url: new URL('/favicon.svg', SITE.url).toString(),
-      },
-    },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-    keywords: post.data.tags.join(', '),
-  };
-}
-
 export default function BlogPostPage({
   params,
 }: {
@@ -109,15 +81,29 @@ export default function BlogPostPage({
     .filter((p) => p.slug !== post.slug && p.data.category === post.data.category)
     .slice(0, 3);
 
-  const jsonLd = articleJsonLd(post);
+  // Schema.org：Article（必发）+ Review（仅评测文章）+ FAQPage（有 FAQ 才发）
+  const schemas = articleAndReviewSchema(post);
+  if (post.data.faq && post.data.faq.length > 0) {
+    schemas.push(faqSchema(post.data.faq));
+  }
 
   return (
     <article className="mx-auto max-w-3xl">
-      {/* JSON-LD 直接内联 */}
-      <script
-        type="application/ld+json"
-        // 内容是我们自己生成的纯对象，安全
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      {/* JSON-LD：多个 schema 各发一段 <script>，比 @graph 数组兼容性更好 */}
+      {schemas.map((s, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }}
+        />
+      ))}
+
+      <Breadcrumbs
+        items={[
+          { label: 'Blog', href: '/blog' },
+          { label: post.data.category, href: `/blog?category=${post.data.category}` },
+          { label: post.data.title },
+        ]}
       />
 
       {/* Hero / 元信息 */}
@@ -187,13 +173,47 @@ export default function BlogPostPage({
           source={post.content}
           components={mdxComponents}
           options={{
+            // next-mdx-remote v6 默认 blockJS:true（安全加固），会把
+            // <Foo prop={42} /> 里的 {42} 全部剥掉。我们的 mdx 内容是仓库
+            // 内可信来源（不接受外部投稿），所以关掉这个限制，让 JSX
+            // 表达式属性正常工作。blockDangerousJS 保留 true，仍然拦截
+            // eval / Function / process 等真正的危险全局。
+            blockJS: false,
             mdxOptions: {
+              format: 'mdx',
               remarkPlugins: [remarkGfm],
               rehypePlugins: [rehypeSlug],
             },
           }}
         />
       </div>
+
+      {/* FAQ 区块：有 faq 数组就渲染。<details> 实现"折叠展开"零 JS 依赖。
+          注意：与上面 faqSchema() JSON-LD 字段必须保持一致，
+          否则 Google 会标记为 "structured data mismatch"。 */}
+      {post.data.faq && post.data.faq.length > 0 && (
+        <section className="mt-12 border-t border-brand-100 pt-8">
+          <h2 className="mb-4 text-xl font-bold text-ink-900">
+            Frequently asked questions
+          </h2>
+          <div className="space-y-2">
+            {post.data.faq.map((item, i) => (
+              <details
+                key={i}
+                className="group rounded-lg border border-brand-100 bg-white px-4 py-3 open:bg-brand-50/30"
+              >
+                <summary className="cursor-pointer list-none font-semibold text-ink-900 marker:hidden">
+                  <span className="mr-2 inline-block transition-transform group-open:rotate-90">
+                    ›
+                  </span>
+                  {item.q}
+                </summary>
+                <p className="mt-2 pl-5 text-sm text-ink-700">{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* 标签 */}
       {post.data.tags.length > 0 && (

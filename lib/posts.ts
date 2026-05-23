@@ -24,6 +24,30 @@ import { CATEGORIES, type Category } from './consts';
 /** content/blog 在仓库根目录下 */
 const BLOG_DIR = path.join(process.cwd(), 'content', 'blog');
 
+/**
+ * 评测条目的结构化数据
+ * 用于 Schema.org Review JSON-LD —— 任何 category=reviews 的文章都建议填，
+ * 但全部字段可选，避免给非评测内容增加负担。
+ */
+export interface ReviewMeta {
+  productName: string;
+  brand?: string;
+  /** 1–5 浮点 */
+  rating: number;
+  /** 评分总分，默认 5 */
+  ratingMax?: number;
+  /** ISO 4217 货币代码 + 数值，如 { currency: "USD", amount: 329 } */
+  price?: { currency: string; amount: number };
+  /** 产品图绝对/相对路径，用于 Schema.org image 字段 */
+  image?: string;
+}
+
+/** FAQ 条目 —— 任何 category 都可以挂，但通常用于 guides */
+export interface FAQItem {
+  q: string;
+  a: string;
+}
+
 /** 单篇文章解析后的形状（前端使用的是这个） */
 export interface Post {
   slug: string;
@@ -40,6 +64,10 @@ export interface Post {
     heroImage?: string;
     heroImageAlt?: string;
     draft: boolean;
+    /** 评测元数据（仅评测文章用） */
+    review?: ReviewMeta;
+    /** FAQ 列表（任何文章可挂） */
+    faq?: FAQItem[];
   };
   /** 自动算出的阅读时长（"5 min read"） */
   readingTime: string;
@@ -83,7 +111,54 @@ function normalizeFrontmatter(
     heroImageAlt:
       typeof raw.heroImageAlt === 'string' ? raw.heroImageAlt : undefined,
     draft: Boolean(raw.draft),
+    review: normalizeReview(raw.review, slug),
+    faq: normalizeFaq(raw.faq, slug),
   };
+}
+
+/** 评测元数据校验：只要存在就必须有 productName & rating，否则报错 */
+function normalizeReview(raw: unknown, slug: string): ReviewMeta | undefined {
+  if (!raw || typeof raw !== 'object') return undefined;
+  const r = raw as Record<string, unknown>;
+  if (typeof r.productName !== 'string') {
+    throw new Error(`[${slug}] frontmatter.review.productName 必填`);
+  }
+  const ratingNum = Number(r.rating);
+  if (!Number.isFinite(ratingNum)) {
+    throw new Error(`[${slug}] frontmatter.review.rating 必须是数字`);
+  }
+  const meta: ReviewMeta = {
+    productName: r.productName,
+    rating: ratingNum,
+    ratingMax: Number.isFinite(Number(r.ratingMax)) ? Number(r.ratingMax) : 5,
+    brand: typeof r.brand === 'string' ? r.brand : undefined,
+    image: typeof r.image === 'string' ? r.image : undefined,
+  };
+  if (r.price && typeof r.price === 'object') {
+    const p = r.price as Record<string, unknown>;
+    if (typeof p.currency === 'string' && Number.isFinite(Number(p.amount))) {
+      meta.price = { currency: p.currency, amount: Number(p.amount) };
+    }
+  }
+  return meta;
+}
+
+/** FAQ 校验：必须是 {q,a} 对象数组 */
+function normalizeFaq(raw: unknown, slug: string): FAQItem[] | undefined {
+  if (!raw) return undefined;
+  if (!Array.isArray(raw)) {
+    throw new Error(`[${slug}] frontmatter.faq 必须是数组`);
+  }
+  return raw.map((item, i) => {
+    if (!item || typeof item !== 'object') {
+      throw new Error(`[${slug}] frontmatter.faq[${i}] 必须是对象`);
+    }
+    const it = item as Record<string, unknown>;
+    if (typeof it.q !== 'string' || typeof it.a !== 'string') {
+      throw new Error(`[${slug}] frontmatter.faq[${i}] 必须有 q/a 字段`);
+    }
+    return { q: it.q, a: it.a };
+  });
 }
 
 /** 读单个 mdx 文件（不过滤草稿） */
