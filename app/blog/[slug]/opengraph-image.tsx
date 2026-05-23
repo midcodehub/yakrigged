@@ -63,7 +63,9 @@ export default function OgImage({ params }: { params: { slug: string } }) {
             'system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial',
         }}
       >
-        {/* 顶部：品牌徽标 */}
+        {/* 顶部：品牌徽标
+            注意：不要在 ImageResponse 里用 emoji——Vercel 构建沙箱默认没有
+            emoji 字体，会让 next/og 静默卡死。用纯 CSS 形状 + 文字最稳。 */}
         <div
           style={{
             display: 'flex',
@@ -75,7 +77,22 @@ export default function OgImage({ params }: { params: { slug: string } }) {
             letterSpacing: -0.5,
           }}
         >
-          <span style={{ fontSize: 48 }}>🛶</span>
+          <div
+            style={{
+              width: 44,
+              height: 44,
+              borderRadius: 11,
+              background: '#f08a3e',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: 28,
+              fontWeight: 800,
+              color: '#0b1220',
+            }}
+          >
+            Y
+          </div>
           <span>{SITE.name}</span>
         </div>
 

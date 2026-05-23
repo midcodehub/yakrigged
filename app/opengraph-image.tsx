@@ -34,9 +34,26 @@ export default function OpengraphImage() {
             'system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <span style={{ fontSize: 64 }}>🛶</span>
-          <span style={{ fontSize: 40, fontWeight: 700, letterSpacing: -1 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
+          {/* 品牌色方块代替 emoji —— Satori 渲染普通 div 极其稳定，
+              而 emoji 在 Vercel build 环境里需要单独的字体包，会卡 build。 */}
+          <div
+            style={{
+              width: 56,
+              height: 56,
+              borderRadius: 14,
+              background: '#f08a3e',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: 36,
+              fontWeight: 800,
+              color: '#0b1220',
+            }}
+          >
+            Y
+          </div>
+          <span style={{ fontSize: 44, fontWeight: 800, letterSpacing: -1 }}>
             {SITE.name}
           </span>
         </div>

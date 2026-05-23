@@ -4,7 +4,8 @@
       "Bash(npm --version)",
       "Bash(npm install *)",
       "Bash(echo \"EXIT=$?\")",
-      "Bash(npm config *)"
+      "Bash(npm config *)",
+      "mcp__github__list_commits"
     ]
   }
 }
