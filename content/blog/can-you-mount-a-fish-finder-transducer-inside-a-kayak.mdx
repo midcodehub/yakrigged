@@ -1,0 +1,214 @@
+---
+title: "Can You Mount a Fish Finder Transducer Inside a Kayak? (Yes — with One Big Caveat)"
+description: "Bonding a transducer to the inside of your kayak hull is a real technique, not a forum myth. Here's exactly when it works, when it doesn't, and the step-by-step bond procedure that survives a summer of saltwater."
+pubDate: 2026-05-23
+category: guides
+tags:
+  - transducer
+  - fish-finder
+  - install
+  - diy
+  - rigging
+  - electronics
+author: Marcus Reed
+faq:
+  - q: Does an in-hull transducer work with side-imaging?
+    a: "No — and this is the single most important thing to know before you bond. Side-imaging relies on tightly focused beams that lose coherence when they pass through hull plastic. You'll see ghost returns, blurred targets, and the SI image quality drops by 60%+. If side-imaging is the feature you bought the unit for, use an external arm or scupper mount instead. For 2D CHIRP and DownVü, in-hull is fine."
+  - q: How much depth range do I lose with an in-hull mount?
+    a: "Expect 15–30% loss in max usable depth. A transducer that's rated to 800 ft through-water typically reads to about 550–600 ft through 5 mm PE hull. In freshwater kayak fishing depths (almost always under 80 ft) this is invisible. In saltwater offshore use beyond ~120 ft, the loss starts to matter."
+  - q: Can I bond a transducer to a fiberglass or Kevlar kayak?
+    a: "Bond to fiberglass: usually fine with the right epoxy. Bond to Kevlar / carbon fiber: don't. Both have air voids in the weave that scatter the sonar signal unpredictably — you'll get useless readings. Rotomolded PE plastic (what 95% of fishing kayaks are made of) is the gold standard for shoot-through-hull mounting."
+  - q: What's the difference between an in-hull transducer and a regular one?
+    a: "Some manufacturers (Airmar, Garmin, Lowrance) sell purpose-built 'shoot-through-hull' transducers with optimized beam shapes and acoustic coupling for hull bonding. A regular transom transducer can also be bonded inside, but the signal loss is ~5–10% worse. If you know you're going in-hull from the start, buy the SCTH version of your unit."
+  - q: Will the epoxy bond survive temperature changes?
+    a: "Marine epoxy (3M 5200, West System) and polyurethane sealant survive freezing-to-100°F cycles easily. The risk isn't temperature — it's UV. If you can see daylight on the bond from inside the hatch, throw a piece of black neoprene over the area to block UV. Bonds shielded from direct UV last 5–7 years before re-bonding is needed."
+---
+
+<AffiliateDisclosure variant="compact" />
+
+**Short answer: yes — for 2D CHIRP and DownVü sonar.** The technique is
+called "shoot-through-hull" mounting, and it works because rotomolded
+polyethylene (the plastic 95% of fishing kayaks are made of) is acoustically
+nearly transparent to 200 kHz sonar. The signal passes through the hull
+with about 15–25% energy loss and reads bottom just like an external puck.
+
+The catch: it does **not** work for side-imaging, and the bond is
+effectively permanent. Read the rest of this guide before you commit.
+
+## What "in-hull" actually means
+
+You glue the transducer to the **inside** of the hull, on the floor of
+the boat, with marine epoxy or polyurethane sealant. There's no hole. No
+external puck. The transducer fires straight down, the sound waves pass
+through the hull plastic, and you get bottom returns on the screen as
+if the transducer were in the water.
+
+This is the same technique professional sport fish boats have used for
+decades. On a kayak, the only differences are scale and that you can do
+it in 30 minutes with $15 of supplies.
+
+## When it works (and when it doesn't)
+
+The single most common mistake is choosing in-hull mounting without
+checking whether your sonar and hull are compatible. Run through this
+checklist before you mix any epoxy:
+
+<ProsCons
+  pros={[
+    "Hull is rotomolded polyethylene (PE) — works great",
+    "Sonar is 2D CHIRP (77/200 kHz) — works",
+    "Sonar is DownVü / ClearVü — works (slight clarity loss)",
+    "Maximum fishing depth is under 100 ft — works",
+    "You only ever fish from this one kayak — works",
+  ]}
+  cons={[
+    "Hull is fiberglass with gelcoat — works but messier (gelcoat sanding required)",
+    "Hull is Kevlar / carbon fiber — does NOT work (air voids scatter signal)",
+    "Sonar has side-imaging — does NOT work (avoid)",
+    "Multi-frequency unit (Garmin LiveScope etc.) — does NOT work",
+    "You plan to sell the kayak within 3 years — reconsider (it's permanent)",
+  ]}
+/>
+
+Every "no" above is a hard no. People try anyway and end up with $400
+fish finders showing static. Don't be that person.
+
+## The physics, in one paragraph
+
+Sonar at 200 kHz has a wavelength of about 7.5 mm in water. A 5 mm PE hull
+is thinner than one wavelength, so the signal treats the hull more like a
+mild attenuator than a barrier. The signal loses energy mostly at the **two
+interfaces** — water-to-plastic and plastic-to-air-bubble. Eliminate the
+air bubbles at the bond, and you're left with one weak interface (water
+to hull) and one strong contact (hull to bonded transducer). That's why
+the bond quality matters so much: any air trapped in the epoxy = dead
+sonar at that frequency.
+
+## What you'll need
+
+<SpecsTable
+  title="In-hull bond kit (under $25 total)"
+  rows={[
+    { label: "Transducer", value: "Your existing 2D CHIRP / DownVü puck (re-use)" },
+    { label: "Bonding adhesive", value: "3M 5200 marine polyurethane (fast cure version) — ~$10" },
+    { label: "Acetone + clean rags", value: "For surface prep — ~$5" },
+    { label: "120-grit sandpaper", value: "Scuff the bond area inside the hull — ~$2" },
+    { label: "Painter's tape", value: "Mark a clean bond perimeter" },
+    { label: "Disposable gloves", value: "5200 doesn't come off skin without acetone" },
+    { label: "Weight (2–5 lb)", value: "Press the transducer down during cure — books work" },
+  ]}
+/>
+
+> **Don't use silicone caulk.** It feels marine-grade but it traps air
+> bubbles and shrinks during cure. Polyurethane (3M 5200 or 4200) or
+> two-part epoxy is what works.
+
+## Step 1 — Find the right spot
+
+Two requirements:
+
+1. **Flat-ish floor** — the transducer face needs full contact with the
+   hull. Most rotomolded kayaks have a slight V or scallops; pick the
+   flattest 3"×3" patch you can find.
+2. **Below waterline when paddling** — this is critical. Look at where
+   the waterline sits when you're loaded with gear. The transducer must
+   be **submerged from the outside** for the bond to work; an air gap
+   between the hull and water is a dead signal.
+
+The sweet spot on most sit-on-top kayaks: 8–12 inches forward of the
+seat, on the center line. Mark a 3" square with painter's tape.
+
+## Step 2 — Surface prep
+
+1. **Scuff** the bond area inside the hull with 120-grit sandpaper. Just
+   knock the gloss off — don't sand all the way to a matte finish. PE
+   doesn't bond well unless the surface energy is raised by scuffing.
+2. **Wipe twice** with acetone on a clean rag. Once with light pressure,
+   wait 60 seconds, again. Any release agent residue from the rotomold
+   process kills the bond.
+3. **Repeat on the transducer face**. Lightly scuff the bottom (the side
+   that normally faces the water) and acetone-wipe it.
+
+## Step 3 — Mix and bond
+
+3M 5200 (fast-cure) is a single-tube polyurethane — no mixing required.
+But the application technique matters:
+
+1. Apply a generous **continuous bead** in a spiral starting from the
+   center of the bond area outward. No skips. No "X" patterns — those
+   trap air.
+2. Press the transducer face-down into the bead, **rotating it slightly
+   back and forth** as you press to squeeze out air. You should see
+   sealant ooze out around the full perimeter.
+3. **Twist 90°, then 90° back**. This shears any remaining bubbles out.
+4. Place the 2–5 lb weight on top to maintain contact during cure.
+5. **Wait the full cure time** (4 hours for "fast" 5200, 24 hours for
+   standard). Don't trust early cure — the inner part of the bond is
+   still soft.
+
+## Step 4 — Test before you trust
+
+Before you take it on a real trip, do this on shore:
+
+1. Fill a kiddie pool or bath tub with 6 inches of water and float the
+   kayak in it (or just pour water into the hull from above for in-place
+   testing).
+2. Power on the head unit. You should see a clean bottom return
+   immediately, comparable to your previous external mount within
+   15–25% range.
+3. If the return is ghosted, fragmented, or absent — the bond has air in
+   it. You can either chisel it off and redo (painful) or live with
+   degraded performance.
+
+## Internal mount vs no-drill external mount — head to head
+
+Most people considering in-hull are also considering an external
+no-drill side-arm. Here's the trade-off:
+
+<ProsCons
+  pros={[
+    "In-hull: zero drag, cleanest deck, no transport hassle",
+    "In-hull: cheapest hardware ($15 vs $65 for a side-arm)",
+    "External: completely reversible — sell the kayak with everything intact",
+    "External: works with side-imaging and live sonar",
+    "External: swappable between multiple kayaks",
+  ]}
+  cons={[
+    "In-hull: permanent — once bonded, it's bonded",
+    "In-hull: no side-imaging, no live sonar",
+    "External: 10–14 oz drag when deployed",
+    "External: more parts to fail / lose",
+  ]}
+/>
+
+If you fish one boat for everything and only ever use 2D + DownVü, in-hull
+is the cleaner solution. If you fish multiple kayaks or might upgrade to
+side-imaging, [a no-drill side-arm mount](/blog/best-no-drill-transducer-mount-for-kayaks)
+keeps your options open.
+
+## Common failures (and how to avoid them)
+
+1. **Air bubbles in the bond.** The #1 failure mode. Solution: continuous
+   bead + rotate during press-down.
+2. **Bonding where the hull is above waterline when loaded.** Test in
+   actual fishing position before you bond.
+3. **Skipping the acetone wipe.** Mold release residue is invisible and
+   wrecks bond strength. Always wipe twice.
+4. **Trying to remove and re-bond.** 5200 doesn't reset. You can scrape
+   off most of it but you'll never get the same bond quality the second
+   time. Get it right the first try.
+
+## What's next
+
+If your transducer is bonded, the next install step is routing the
+cable from the transducer up to your head unit without flooding the
+hatch. We covered that in detail in [our wiring guide](/blog/how-to-run-wires-in-a-kayak-for-a-fish-finder)
+— even though the transducer no longer comes out through a deck
+penetration, the head-unit power cable still needs the same sealed
+gland treatment.
+
+---
+
+Done a shoot-through bond on an unusual hull? Email us — we're
+collecting hull material vs sonar performance data and your install
+helps the next angler.

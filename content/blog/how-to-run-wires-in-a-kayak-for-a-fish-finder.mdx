@@ -1,0 +1,195 @@
+---
+title: "How to Run Wires in a Kayak for a Fish Finder (Without Leaks)"
+description: "Two ruined batteries taught me the right way to route power and transducer cables on a sit-on-top kayak. Here's the 75-minute install — including the $8 part that stops every leak."
+pubDate: 2026-05-22
+category: guides
+tags:
+  - wiring
+  - fish-finder
+  - rigging
+  - install
+  - electronics
+author: Marcus Reed
+faq:
+  - q: Do I need an inline fuse on a kayak fish finder battery?
+    a: "Yes — between battery positive and the head unit. Use a 3 A blade fuse for a 5-inch unit and a 5 A fuse for a 7-inch unit. A short circuit on a 7Ah AGM can melt insulation in 30 seconds without a fuse. Inline ATC fuse holders are about $4 and live as close to the battery terminal as possible — not next to the head unit."
+  - q: What gauge wire should I use for a kayak fish finder?
+    a: "18 AWG is plenty for the typical sub-6-foot run on a kayak. The OEM power leads that ship with most Garmin / Lowrance / Humminbird units are already 18 AWG marine-tinned copper. Don't downsize to 22 AWG to save space — voltage drop at 12 V matters more than people think, especially on cold mornings when battery output sags."
+  - q: Can I solder wire connections inside a kayak hull?
+    a: "Soldered joints with heat-shrink work, but they go brittle once vibration sets in for a season. Marine-grade crimped butt connectors with adhesive-lined heat-shrink are the durability standard. Use a real ratcheting crimper (not pliers) and put dielectric grease on every connection if you fish saltwater."
+  - q: Should the transducer cable share a hole with the power cable?
+    a: "Yes — that's the whole point of a single sealed gland. Two cables, one hole, one seal to maintain. Just make sure the gland's bore size accommodates both cable diameters with a snug fit. A 12-mm gland fits an 18 AWG power lead plus most CHIRP transducer pigtails."
+  - q: Where should the battery live in a kayak?
+    a: "In a sealed dry box inside the rear hatch, as low and as centered fore-aft as possible. Low keeps your center of gravity stable. Centered means the kayak doesn't trim bow-heavy or stern-heavy. Strap the box to a deck pad or rail so it can't shift in a roll."
+---
+
+<AffiliateDisclosure variant="compact" />
+
+Two trips. Two ruined batteries. That's how long it took me to learn that
+*running wires for a fish finder* looks like a 20-minute job and is actually
+a 75-minute job done right — or a flooded hatch done wrong.
+
+This guide is the procedure I use now. It works on every sit-on-top kayak
+I've installed (which covers 95% of fish-finder rigs) and the same logic
+applies to sit-inside hulls with minor mounting tweaks. First install
+takes about 75 minutes. By your third boat you'll do it in 25.
+
+## The three places anglers actually run wires
+
+Before we touch a drill, decide which routing path you're committing to.
+There are exactly three:
+
+### Option A — Through a sealed cable gland (recommended)
+
+A purpose-built marine cable gland threaded through a single hole in the
+rear hatch lid. One penetration, two cables (power + transducer), 100%
+watertight once the gland nut is snugged down. This is the only method
+I'd trust on a multi-day trip.
+
+### Option B — Under the hatch rubber seal
+
+Coil the cables flat and pinch them under the hatch lip rubber, exiting
+where the seal compresses against the deck. **No drilling.** It works for
+calm-water day trips but the seal fatigues over a season and you'll get
+slow drips on rough water.
+
+### Option C — Through a scupper plug
+
+For sit-on-top hulls with a scupper near the seat, you can route the
+transducer cable straight down through a scupper-mount transducer puck,
+and the power cable up through a watertight scupper grommet. Skips the
+hatch entirely. Only worth it if your hull is already designed for it
+(Hobie Outback, Wilderness Tarpon).
+
+### Which one to pick
+
+<ProsCons
+  pros={[
+    "Option A: one $8 gland, fully watertight, 5-year service life",
+    "Option B: zero drilling — perfect for test-fitting before commit",
+    "Option C: cleanest deck, but only if your hull supports it",
+  ]}
+  cons={[
+    "Option A: requires a 12 mm hole through the hatch lid (commit decision)",
+    "Option B: rubber seal fails after ~50 days on the water in saltwater",
+    "Option C: limited to specific hull designs; pricier hardware",
+  ]}
+/>
+
+For 90% of installs, **Option A is the right answer**. The rest of this
+guide is the Option A procedure step by step. If you're test-fitting and
+will commit later, Option B works as a temporary install — just don't
+trust it past one fishing season.
+
+## What you'll need
+
+<SpecsTable
+  title="Kayak fish-finder wiring kit (under $40 total)"
+  rows={[
+    { label: "Marine cable gland (12 mm bore)", value: "Blue Sea 1004 or equivalent — ~$8" },
+    { label: "Inline ATC fuse holder + 3 A fuse", value: "Blue Sea 5024 — ~$5" },
+    { label: "Marine crimp butt connectors (18-22 AWG)", value: "Adhesive-lined heat-shrink type, 20-pack ~$10" },
+    { label: "Dielectric grease (saltwater only)", value: "Permatex 22058 — $4 / oz" },
+    { label: "Ratcheting crimper", value: "Klein 1005 or similar — ~$25 (one-time buy)" },
+    { label: "Drill + 12 mm step bit", value: "Step bits leave cleaner edges in HDPE than spade bits" },
+    { label: "Painter's tape + sharpie", value: "For layout" },
+  ]}
+/>
+
+## Step 1 — Plan the route on dry land
+
+Put the kayak on sawhorses, seat installed, fully rigged. Sit in it with a
+rod in your hand. Where does the head unit naturally land when you look
+down? Where will the cables snag your line on a hookset?
+
+Mark the head unit position and the cable path with painter's tape:
+
+1. **Battery compartment** (almost always under the rear hatch)
+2. **Up through the hatch lid** at the rear corner closest to your seat
+3. **Along a deck rail / track**, *not* across open deck (snag risk)
+4. **Up to the RAM ball** under your head unit
+
+If your kayak has accessory tracks (most modern ones do), route the cables
+parallel to the track and lash them every 6 inches with reusable cable
+ties. Tracks are flat — cables hidden under them never snag.
+
+## Step 2 — Drill the gland hole (this is the irreversible step)
+
+Take your time here. PE plastic loves to grab a hole saw, and a 12 mm hole
+in the wrong spot is permanent.
+
+1. **Pilot first**, slow speed. PE plastic grabs faster than you'd think.
+2. **Step bit at 500–700 RPM** for the main bore. Light pressure — let the
+   bit do the work. Push too hard and you'll get a melted, glassy edge
+   that won't seal.
+3. **Deburr with a deburring tool or a sharp utility knife** rotated by
+   hand. A clean, perpendicular hole = a clean seal.
+4. **Test-fit the gland**. It should drop through without forcing, with
+   maybe 0.5 mm clearance for the o-ring to compress.
+
+> ⚠️ **Common mistake**: drilling through the deck instead of the hatch
+> lid. The deck flexes when you load gear; the lid doesn't. Flex = micro
+> cracks in your seal over time.
+
+## Step 3 — Run the cables and seal the gland
+
+1. Feed both cables (power + transducer pigtail) through the gland nut
+   from the **inside of the hatch outward**. Length matters: leave 6
+   inches of slack inside the hatch for service.
+2. Drop the gland body into the hole, thread the nut on by hand, then
+   tighten with two wrenches until the o-ring just starts to deform — no
+   gorilla torque.
+3. Connect the inline fuse to the battery positive **before** routing the
+   power cable past anything that could chafe it.
+4. Crimp the head unit's molex connector to the power leads. Heat-shrink
+   the crimps with a real heat gun (not a lighter — uneven shrinking
+   creates air gaps).
+
+## Step 4 — Strain relief everywhere
+
+This is where most DIY rigs fail after one season. Cables fatigue at every
+point where they bend repeatedly. To prevent it:
+
+- **Lash the cable to a deck rail or track** within 2 inches of the gland
+- **Add a service loop** (3-inch loose curve) before the head unit
+- **Never use bare zip ties**. They cut into the jacket. Use rubber-lined
+  P-clamps or padded cable saddles instead.
+
+## Step 5 — Pressure test before you fish
+
+Plug the head unit in, power on, then dunk just the rear half of the
+kayak in a kiddie pool / bath tub up to the hatch line. Leave it for 10
+minutes. If water gets past the gland, you'll see it — pull the head unit
+back off the mount and you can dry, re-grease the o-ring, and try again
+before commit.
+
+I do this on every install. It costs nothing and prevents the "ride home
+from the launch with $400 of waterlogged electronics" event.
+
+## Mistakes that cost me batteries (so they don't cost you any)
+
+1. **Skipping the inline fuse.** A short on a 7Ah AGM dumps 100+ amps for
+   long enough to melt insulation. A $4 fuse stops it cold.
+2. **Mounting the head unit before final cable routing.** I once drilled
+   the RAM ball into the deck, then realized the cable run interfered
+   with the paddle stroke. Cost: one mount + one cosmetic plug.
+3. **Wax-impregnated marine sealant on the o-ring.** It's for thread
+   sealing, not o-ring lubrication. Use silicone grease on the o-ring
+   only. Sealant on metal threads if you must.
+4. **Coiling excess cable in the hatch and leaving it loose.** Eventually
+   it ends up wrapped around the battery and pinches a lead. Lash any
+   slack to a fixed point.
+
+## What's next
+
+Once your wiring is run, the head unit mount itself is the same drill /
+seal procedure. We covered that exact procedure in detail in our [flush-mount
+rod holder install guide](/blog/how-to-rig-rod-holders) — same physics,
+same sealant, same backing-plate trick. Read both before you start
+drilling and you'll skip the second-trip-to-the-hardware-store stage.
+
+---
+
+Have a rig you're proud of? Tag us — we feature reader installs every
+month in the newsletter. And if this guide saved you a battery, [subscribe to
+the RSS feed](/rss.xml) so you don't miss the next how-to.
