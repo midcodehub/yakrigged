@@ -39,6 +39,7 @@ export const FOOTER_LINKS: ReadonlyArray<{ label: string; href: string }> = [
   { label: 'RSS', href: '/rss.xml' },
   { label: 'Sitemap', href: '/sitemap.xml' },
   { label: 'Privacy', href: '/privacy' },
+  { label: 'Terms', href: '/terms' },
   { label: 'Contact', href: 'mailto:hello@yakrigged.com' },
 ];
 
