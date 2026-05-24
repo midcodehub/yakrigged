@@ -17,13 +17,23 @@ export default function AboutPage() {
   return (
     <div className="mx-auto max-w-5xl space-y-24 pb-24">
       {/* Hero Section */}
-      <section className="relative overflow-hidden rounded-3xl bg-ink-900 px-6 py-20 text-center sm:px-12 sm:py-32">
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-900/40 via-ink-900 to-ink-900" />
+      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-700 via-brand-600 to-brand-500 px-6 py-20 text-center text-white shadow-lg sm:px-12 sm:py-32">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-10 -top-10 h-72 w-72 rounded-full bg-brand-300/20 blur-3xl"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-16 -left-16 h-80 w-80 rounded-full bg-accent-500/20 blur-3xl"
+        />
         <div className="relative mx-auto max-w-3xl">
-          <h1 className="mb-6 text-4xl font-extrabold tracking-tight text-white sm:text-6xl">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-brand-100">
+            Independent & Field-Tested
+          </p>
+          <h1 className="mb-6 text-4xl font-extrabold tracking-tight sm:text-6xl">
             We build better kayak anglers.
           </h1>
-          <p className="text-xl leading-relaxed text-ink-300">
+          <p className="text-xl leading-relaxed text-brand-50">
             {SITE.name} is an independent kayak fishing gear publication. We don&apos;t just read spec sheets—we test everything we recommend on real water, on multiple trips, in multiple conditions.
           </p>
         </div>

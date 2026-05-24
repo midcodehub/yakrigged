@@ -18,6 +18,7 @@ import { FormattedDate } from '@/components/FormattedDate';
 import { BlogCard } from '@/components/BlogCard';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { NewsletterForm } from '@/components/NewsletterForm';
+import { CommunityBanner } from '@/components/CommunityBanner';
 import { GiscusComments } from '@/components/GiscusComments';
 import { mdxComponents } from '@/lib/mdx-components';
 import { SITE } from '@/lib/consts';
@@ -226,21 +227,9 @@ export default function BlogPostPage({
         </section>
       )}
 
-      {/* Newsletter inline CTA —— 读者刚读完正文，订阅意向最高的时机 */}
-      <section
-        aria-label="Subscribe to YakRigged"
-        className="mt-12 rounded-2xl border border-brand-100 bg-brand-50/40 p-6 sm:p-8"
-      >
-        <NewsletterForm
-          source="article"
-          heading="Liked this? Get the next one in your inbox."
-          subheading="One email a week. Field-tested gear reviews & DIY rigs."
-        />
-      </section>
-
       {/* 标签 */}
       {post.data.tags.length > 0 && (
-        <footer className="mt-12 border-t border-brand-100 pt-6">
+        <footer className="mt-12 border-t border-brand-100 pt-8">
           <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-ink-500">
             Tags
           </h2>
@@ -259,8 +248,20 @@ export default function BlogPostPage({
         </footer>
       )}
 
-      {/* 评论区 */}
-      <GiscusComments />
+      {/* Conversion Hub (Primary: Facebook, Secondary: Comments, Tertiary: Email) */}
+      <div className="mt-16 space-y-6">
+        <CommunityBanner />
+        
+        <GiscusComments />
+        
+        <div className="rounded-2xl border border-brand-100 bg-brand-50/40 p-6 sm:p-8">
+          <NewsletterForm
+            source="article"
+            heading="Not on Facebook? Get weekly tips via email."
+            subheading="One email a week. Field-tested gear reviews & DIY rigs."
+          />
+        </div>
+      </div>
 
       {/* 相关文章 */}
       {related.length > 0 && (
