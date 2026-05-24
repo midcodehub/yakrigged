@@ -18,6 +18,7 @@ import { FormattedDate } from '@/components/FormattedDate';
 import { BlogCard } from '@/components/BlogCard';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { NewsletterForm } from '@/components/NewsletterForm';
+import { GiscusComments } from '@/components/GiscusComments';
 import { mdxComponents } from '@/lib/mdx-components';
 import { SITE } from '@/lib/consts';
 import {
@@ -257,6 +258,9 @@ export default function BlogPostPage({
           </ul>
         </footer>
       )}
+
+      {/* 评论区 */}
+      <GiscusComments />
 
       {/* 相关文章 */}
       {related.length > 0 && (
