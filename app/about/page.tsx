@@ -24,7 +24,7 @@ export default function AboutPage() {
             We build better kayak anglers.
           </h1>
           <p className="text-xl leading-relaxed text-ink-300">
-            {SITE.name} is an independent kayak fishing gear publication. We don't just read spec sheets—we test everything we recommend on real water, on multiple trips, in multiple conditions.
+            {SITE.name} is an independent kayak fishing gear publication. We don&apos;t just read spec sheets—we test everything we recommend on real water, on multiple trips, in multiple conditions.
           </p>
         </div>
       </section>
@@ -76,7 +76,7 @@ export default function AboutPage() {
             </div>
             <h3 className="mb-3 text-xl font-bold text-ink-900">100% Transparent</h3>
             <p className="text-ink-600">
-              If a product sucks, we'll tell you. We disclose every affiliate relationship clearly at the top of every article.
+              If a product sucks, we&apos;ll tell you. We disclose every affiliate relationship clearly at the top of every article.
             </p>
           </div>
         </div>
@@ -87,7 +87,7 @@ export default function AboutPage() {
         <div className="mb-12 text-center sm:text-left">
           <h2 className="text-3xl font-bold tracking-tight text-ink-900">Who We Are</h2>
           <p className="mt-3 text-lg text-ink-600">
-            A team of kayak anglers who spent too much money on bad gear, so you don't have to.
+            A team of kayak anglers who spent too much money on bad gear, so you don&apos;t have to.
           </p>
         </div>
 
@@ -119,7 +119,7 @@ export default function AboutPage() {
       <section className="text-center rounded-3xl border border-brand-100 bg-white px-6 py-16 sm:px-12">
         <h2 className="text-3xl font-bold tracking-tight text-ink-900">Get in Touch</h2>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-ink-600">
-          Have a tip, a correction, or a gear suggestion? We're always open to hearing from fellow anglers.
+          Have a tip, a correction, or a gear suggestion? We&apos;re always open to hearing from fellow anglers.
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
