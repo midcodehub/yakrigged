@@ -5,6 +5,7 @@
  */
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Header } from '@/components/Header';
@@ -88,6 +89,8 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+
+        <Script defer src="https://cloud.umami.is/script.js" data-website-id="dda4a60a-5278-448b-94b3-7a99b34a7eaf" />
 
         {/*
           Vercel Analytics（PV/UV、来源、设备）+ Speed Insights（Core Web Vitals）
