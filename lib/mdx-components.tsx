@@ -20,6 +20,66 @@ import { StarRating } from '@/components/review/StarRating';
 import { VerdictBox } from '@/components/review/VerdictBox';
 import { KeyTakeaway, ExpertQuote, StatBlock } from '@/components/geo';
 
+/**
+ * 已知"联盟链接短链"hostname 清单
+ * --------------------------------------------
+ * 这些域名整域都是营销转链，命中即视为联盟链接，无需再看参数。
+ * 后续接入新的联盟渠道（如 ShareASale / Impact / CJ / Awin 等短链）
+ * 时，在这里追加一行即可，所有 MDX 文章里写的 markdown 链接会自动
+ * 注入 rel="sponsored nofollow"。
+ */
+const AFFILIATE_SHORTLINK_HOSTS = new Set<string>([
+  'amzn.to',     // Amazon Associates 短链
+  // 'geni.us',  // 多平台跳转短链（如有需要再开）
+  // 'shrsl.com', // ShareASale 短链
+]);
+
+/**
+ * Amazon 各国站点的长链域名
+ * --------------------------------------------
+ * Amazon 长链里只有携带 `?tag=xxx-20` 这种 Associates 标识参数时
+ * 才算联盟链接；纯粹的商品页引用（无 tag）不应该被打成 sponsored
+ * （否则会被 Google 视为过度 nofollow，反而拖累站内权重传递）。
+ * 接入新的 Amazon 区域站点时在这里追加基础域名即可。
+ */
+const AMAZON_LONGLINK_DOMAINS = [
+  'amazon.com',
+  'amazon.co.uk',
+  'amazon.ca',
+  'amazon.de',
+  'amazon.fr',
+  'amazon.it',
+  'amazon.es',
+  'amazon.co.jp',
+  'amazon.com.au',
+];
+
+/**
+ * 判断给定 URL 是否为联盟链接
+ *
+ * 规则：
+ *   1. hostname 命中 AFFILIATE_SHORTLINK_HOSTS（短链整域算）
+ *   2. hostname 命中 AMAZON_LONGLINK_DOMAINS 且 query 含 `tag` 参数
+ *
+ * 注意 hostname 匹配采用 "精确等于 OR 以 .<域> 结尾"，避免被
+ * notamazon.com 这类钓鱼域意外命中。
+ */
+function isAffiliateUrl(href: string): boolean {
+  let url: URL;
+  try {
+    url = new URL(href);
+  } catch {
+    return false;
+  }
+  const host = url.hostname.toLowerCase();
+  if (AFFILIATE_SHORTLINK_HOSTS.has(host)) return true;
+  const isAmazonHost = AMAZON_LONGLINK_DOMAINS.some(
+    (d) => host === d || host.endsWith(`.${d}`),
+  );
+  if (isAmazonHost && url.searchParams.has('tag')) return true;
+  return false;
+}
+
 function MdxLink({
   href,
   ...rest
@@ -27,11 +87,17 @@ function MdxLink({
   if (!href) return <a {...rest} />;
   const isExternal = /^https?:\/\//.test(href);
   if (isExternal) {
+    // 联盟链接：rel 必须包含 sponsored + nofollow
+    // —— 这是 Amazon Associates 运营条款的硬性要求，同时 Google SEO
+    // 也用这两个值区分付费链接，漏标可能影响佣金结算和搜索权重。
+    const rel = isAffiliateUrl(href)
+      ? 'nofollow sponsored noopener noreferrer'
+      : 'noopener noreferrer';
     return (
       <a
         href={href}
         target="_blank"
-        rel="noopener noreferrer"
+        rel={rel}
         {...rest}
       />
     );

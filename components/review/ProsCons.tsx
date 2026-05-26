@@ -10,9 +10,13 @@
  *     cons={["Heavy at 1.2kg", "No Bluetooth"]}
  *   />
  */
+/**
+ * pros / cons 每条支持 ReactNode，方便在 MDX 里直接塞内联链接（联盟链接、内链）。
+ * 旧用法 ["纯文本"] 完全兼容 —— string 本身就是 ReactNode 的合法子类型。
+ */
 interface Props {
-  pros?: string[];
-  cons?: string[];
+  pros?: ReadonlyArray<React.ReactNode>;
+  cons?: ReadonlyArray<React.ReactNode>;
 }
 
 export function ProsCons({ pros = [], cons = [] }: Props) {
