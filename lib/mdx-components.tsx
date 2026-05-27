@@ -13,6 +13,7 @@ import Image, { type ImageProps } from 'next/image';
 import Link from 'next/link';
 import type { ComponentPropsWithoutRef } from 'react';
 import { AffiliateDisclosure } from '@/components/AffiliateDisclosure';
+import { AffiliateLink } from '@/components/AffiliateLink';
 import { YouTube } from '@/components/YouTube';
 import { ProsCons } from '@/components/review/ProsCons';
 import { SpecsTable } from '@/components/review/SpecsTable';
@@ -152,6 +153,8 @@ export const mdxComponents = {
   Image: MdxImage,
   // 在 MDX 里直接 <AffiliateDisclosure /> 就能用
   AffiliateDisclosure,
+  // <AffiliateLink asin="B07YPN7XYZ">名字</AffiliateLink> —— 用 ASIN 自动拼 affiliate 链接
+  AffiliateLink,
   // YouTube 视频嵌入：<YouTube id="..." title="..." caption="..." />
   YouTube,
   // 评测内容专用组件
