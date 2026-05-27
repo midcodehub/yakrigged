@@ -12,7 +12,8 @@
       "WebSearch",
       "Bash(npx tsc *)",
       "Bash(npx next *)",
-      "Bash(grep -v \":0$\")"
+      "Bash(grep -v \":0$\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'{len\\(d\\)} 篇文章'\\)\")"
     ]
   }
 }
