@@ -15,7 +15,10 @@
       "Bash(grep -v \":0$\")",
       "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f'{len\\(d\\)} 篇文章'\\)\")",
       "WebFetch(domain:www.youtube.com)",
-      "WebFetch(domain:www.google.com)"
+      "WebFetch(domain:www.google.com)",
+      "Bash(sed 's|content/blog/||;s|.mdx||')",
+      "Bash(sed -n '1,40p' app/llms.txt/route.ts)",
+      "Bash(node scripts/build-search-index.mjs)"
     ]
   }
 }

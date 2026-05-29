@@ -24,18 +24,11 @@
  *     （不带 tag，没佣金但不会 404；构建时 console.warn 一次提醒）
  */
 import type { ReactNode } from 'react';
-
-/** 支持的 Amazon 区域站点 —— 新增国家时在这里加一行即可 */
-type AmazonRegion =
-  | 'com'      // 美国（默认）
-  | 'co.uk'    // 英国
-  | 'ca'       // 加拿大
-  | 'de'       // 德国
-  | 'fr'       // 法国
-  | 'it'       // 意大利
-  | 'es'       // 西班牙
-  | 'co.jp'    // 日本
-  | 'com.au';  // 澳大利亚
+import {
+  buildAmazonUrl,
+  DEFAULT_AMAZON_TAG,
+  type AmazonRegion,
+} from '@/lib/amazon';
 
 interface Props {
   /** Amazon ASIN（10 位字母数字代码，在商品 URL 的 /dp/ 后面） */
@@ -51,8 +44,6 @@ interface Props {
    */
   tag?: string;
 }
-
-const DEFAULT_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG ?? '';
 
 /** 仅在构建期打一次警告，避免 SSG 期每个用法都重复 warn */
 let warnedMissingTag = false;
@@ -71,7 +62,7 @@ export function AffiliateLink({
     return <span>{children}</span>;
   }
 
-  const effectiveTag = tag || DEFAULT_TAG;
+  const effectiveTag = tag || DEFAULT_AMAZON_TAG;
 
   if (!effectiveTag && !warnedMissingTag && typeof window === 'undefined') {
     console.warn(
@@ -82,8 +73,8 @@ export function AffiliateLink({
   }
 
   // 拼装 URL：基础形式 https://www.amazon.<region>/dp/<ASIN>?tag=<TAG>
-  const tagQuery = effectiveTag ? `?tag=${encodeURIComponent(effectiveTag)}` : '';
-  const url = `https://www.amazon.${region}/dp/${asin}${tagQuery}`;
+  // 复用 lib/amazon 的共享逻辑，避免和 VerdictBox 等组件各拼一套。
+  const url = buildAmazonUrl(asin, region, tag);
 
   return (
     <a

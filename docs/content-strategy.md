@@ -85,6 +85,22 @@
 | Best tandem fishing kayaks | 🟡 Med | "best tandem fishing kayak" |
 | Inflatable fishing kayaks | 🟢 Low | "inflatable fishing kayak review" |
 
+### Cluster 6: Kayak Paddles 🟡 (Hub 已建立)
+
+> 关键词意图分析：best / top / top rated / best rated / reviews 这 6 个变体 Google 判为**同一意图**，由单一 Hub 通吃，**严禁拆成多页**（会 cannibalize）。"for sale / near me" 是零售/本地意图，内容站吃不到，仅靠 Hub 的 "Where to buy" 小节连带承接。编辑视角用**钓鱼桨权威**切入做差异化。数据为**研究型 roundup**（非亲测，文中已显式标注方法论，与全站"field-tested"口径区分）。
+
+**Hub**: `/blog/best-kayak-paddles`
+- 目标关键词: "best kayak paddles", "top rated kayak paddles", "best rated kayak paddles", "kayak paddles reviews", "top kayak paddles", "kayak paddles"(连带)
+
+| Spoke | Status | Priority | Target Keyword |
+|-------|--------|----------|---------------|
+| Best Kayak Paddles (买家指南) | ✅ Hub | — | "best/top/top rated kayak paddles" |
+| What size kayak paddle do I need (尺寸指南) | ⬜ 待写 | 🔴 High | "what size kayak paddle" — 信息型,引流+反链利器,AI 爱引用 |
+| Best kids kayak paddles (细分人群) | ⬜ 待写 | 🟡 Med | "kids kayak paddles" — 竞争低 |
+| Best kayak fishing paddles (绑定钓鱼权威) | ⬜ 可选 | 🟢 Low | "best kayak fishing paddle" |
+
+**内链规则**: Hub 链到现有 rod holders / fish finder hub;待写的尺寸指南与 kids 桨需链回本 Hub。
+
 ---
 
 ## 内容优先级矩阵

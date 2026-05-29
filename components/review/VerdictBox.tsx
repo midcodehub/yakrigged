@@ -7,24 +7,36 @@
  *   - 用户 70% 不会读完正文，把核心结论前置可以拉高停留 + 转化
  *
  * 用法（在 MDX 顶部）：
+ * 买链有两种写法（二选一，asin 更推荐）：
+ *   1. asin —— 传 Amazon ASIN，自动用全局 env tag 拼出联盟链接（无需手写 tag）：
+ *        <VerdictBox ... asin="B0040ZME8U" />
+ *   2. buyUrl —— 直接给完整 URL（厂家页 / 非 Amazon 渠道时用）：
+ *        <VerdictBox ... buyUrl="https://werner.com/..." />
+ *   两者都传时 buyUrl 优先（视为显式覆盖）。
+ *
  *   <VerdictBox
  *     productName="Garmin Striker Vivid 5cv"
  *     rating={4.5}
  *     bestFor="Solo kayak anglers who fish all day"
  *     skipIf="You need side-imaging or networking"
- *     buyUrl="https://amzn.to/..."
+ *     asin="B0XXXXXXXX"
  *     price="$329 (as of May 2026)"
  *   />
  */
 import { StarRating } from './StarRating';
+import { buildAmazonUrl, type AmazonRegion } from '@/lib/amazon';
 
 interface Props {
   productName: string;
   rating: number;
   bestFor: string;
   skipIf?: string;
-  /** 联盟链接 / 厂家页 */
+  /** 联盟链接 / 厂家页（完整 URL）。与 asin 二选一，传了则优先 */
   buyUrl?: string;
+  /** Amazon ASIN —— 自动用全局 env tag 拼链，比手写 buyUrl 更省心 */
+  asin?: string;
+  /** Amazon 区域站点，配合 asin 用，默认 com */
+  region?: AmazonRegion;
   /** 显示价格字符串（包含币种/日期） */
   price?: string;
 }
@@ -35,8 +47,12 @@ export function VerdictBox({
   bestFor,
   skipIf,
   buyUrl,
+  asin,
+  region,
   price,
 }: Props) {
+  // buyUrl 显式覆盖；否则有 asin 就自动拼带 tag 的 Amazon 链接
+  const href = buyUrl ?? (asin ? buildAmazonUrl(asin, region) : undefined);
   return (
     <aside
       role="complementary"
@@ -70,16 +86,16 @@ export function VerdictBox({
           )}
         </dl>
 
-        {(buyUrl || price) && (
+        {(href || price) && (
           <div className="flex flex-wrap items-center justify-between gap-3 border-t border-brand-200 pt-4">
             {price && (
               <span className="text-sm text-ink-700">
                 <strong>Price:</strong> {price}
               </span>
             )}
-            {buyUrl && (
+            {href && (
               <a
-                href={buyUrl}
+                href={href}
                 target="_blank"
                 rel="nofollow sponsored noopener"
                 className="rounded-full bg-accent-500 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-accent-600"
