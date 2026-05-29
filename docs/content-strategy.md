@@ -95,8 +95,8 @@
 | Spoke | Status | Priority | Target Keyword |
 |-------|--------|----------|---------------|
 | Best Kayak Paddles (买家指南) | ✅ Hub | — | "best/top/top rated kayak paddles" |
-| What size kayak paddle do I need (尺寸指南) | ⬜ 待写 | 🔴 High | "what size kayak paddle" — 信息型,引流+反链利器,AI 爱引用 |
-| Best kids kayak paddles (细分人群) | ⬜ 待写 | 🟡 Med | "kids kayak paddles" — 竞争低 |
+| What size kayak paddle do I need (尺寸指南) | ✅ | 🔴 High | "what size kayak paddle" — 信息型,引流+反链利器,AI 爱引用 |
+| Best kids kayak paddles (细分人群) | ✅ | 🟡 Med | "kids kayak paddles" — 竞争低 |
 | Best kayak fishing paddles (绑定钓鱼权威) | ⬜ 可选 | 🟢 Low | "best kayak fishing paddle" |
 
 **内链规则**: Hub 链到现有 rod holders / fish finder hub;待写的尺寸指南与 kids 桨需链回本 Hub。
