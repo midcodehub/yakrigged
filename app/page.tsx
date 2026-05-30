@@ -72,6 +72,19 @@ export default function HomePage() {
               Browse how-to guides
             </Link>
           </div>
+
+          {/* 新手入门 pillar 的 root 级内链：给 pillar 一条来自首页（最高权重页）
+              的链接，补齐 首页 → pillar → clusters 的权重传递链。
+              做成轻量文字链而非第三个按钮，避免和上面两个主 CTA 抢视觉。 */}
+          <p className="mt-5 text-sm text-brand-100">
+            New to the sport?{' '}
+            <Link
+              href="/blog/kayak-fishing-for-beginners"
+              className="font-semibold text-white underline underline-offset-4 hover:text-accent-500"
+            >
+              Start with our kayak fishing for beginners guide →
+            </Link>
+          </p>
         </div>
       </section>
 

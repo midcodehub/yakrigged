@@ -50,17 +50,22 @@
 
 | Spoke | Priority | Target Keyword |
 |-------|----------|---------------|
-| Best PFDs for kayak fishing | 🔴 High | "best life jacket kayak fishing" |
+| Best PFDs for kayak fishing | ✅ `best-pfds-for-kayak-fishing` | "best life jacket kayak fishing" — 研究型 roundup,回链 pillar |
 | Kayak stability & self-rescue | 🔴 High | "kayak self rescue technique" |
 | Cold water kayak fishing gear | 🟡 Med | "cold water kayak fishing" |
 | Kayak fishing in wind/current | 🟡 Med | "kayak fishing windy conditions" |
 | Kayak visibility gear | 🟢 Low | "kayak safety flag" |
 
-### Cluster 4: Kayak Fishing Techniques
+### Cluster 4: Kayak Fishing (站级 Pillar) ✅ (Hub 已建立)
 
-**Hub (待写)**: "Kayak Fishing for Beginners: Techniques That Work from a Yak"
-- Slug: `kayak-fishing-techniques-beginners`
-- 目标关键词: "kayak fishing tips", "kayak fishing for beginners"
+> "kayak fishing" 是超级头部词，单页吃不下。打法是建**站级 beginner pillar** 吃长尾(for beginners / tips / is it safe / gear / cost)，往下内链鱼探 + 船桨等所有 cluster,靠主题覆盖完整度连带渗透头部词。首页 Hero 已加 root 级内链指向 pillar。
+
+**Hub**: `/blog/kayak-fishing-for-beginners` ("Kayak Fishing for Beginners: The Complete Guide")
+- 目标关键词: "kayak fishing for beginners", "how to start kayak fishing", "kayak fishing tips", "is kayak fishing safe", "kayak fishing gear/cost"
+- 内链下钻: 船桨 cluster (paddles/sizing/fishing paddles) + 鱼探 cluster (setup hub/best fish finders/DIY box) + rod holders
+- 反向链接: best-kayak-paddles、best-kayak-fishing-paddles 已回链 pillar
+
+**Spoke (待写，pillar 内已内联讲透，暂不留死链)**: 详见下方原 techniques/safety 子话题
 
 | Spoke | Priority | Target Keyword |
 |-------|----------|---------------|
@@ -73,9 +78,10 @@
 
 ### Cluster 5: Best Kayaks for Fishing (Comparison)
 
-**Hub (待写)**: "Best Fishing Kayaks in 2026: Tested & Compared"
-- Slug: `best-fishing-kayaks-2026`
-- 目标关键词: "best fishing kayak", "fishing kayak reviews"
+**Hub**: `/blog/best-fishing-kayaks` ✅ (已建立)
+- 目标关键词: "best fishing kayak", "fishing kayak reviews", "best fishing kayaks 2026"
+- 6 款真实 ASIN(Perception/Lifetime/Vibe/Old Town×2/Pelican),研究型 roundup
+- 全站内链枢纽: 内链船桨 + PFD + 鱼探 cluster + rod holders + pillar; pillar 选船小节已回链本 Hub
 
 | Spoke | Priority | Target Keyword |
 |-------|----------|---------------|

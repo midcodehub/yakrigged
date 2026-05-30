@@ -22,7 +22,14 @@
       "Bash(node -e \"const m=require\\('gray-matter'\\);const fs=require\\('fs'\\);try{m\\(fs.readFileSync\\('content/blog/what-size-kayak-paddle-do-i-need.mdx','utf8'\\)\\)}catch\\(e\\){console.log\\(e.message\\)}\")",
       "Bash(node -e \"const m=require\\('gray-matter'\\);m\\(require\\('fs'\\).readFileSync\\('content/blog/best-kids-kayak-paddles.mdx','utf8'\\)\\);console.log\\('frontmatter OK'\\)\")",
       "Bash(node -e \"const m=require\\('gray-matter'\\);m\\(require\\('fs'\\).readFileSync\\('content/blog/best-kayak-fishing-paddles.mdx','utf8'\\)\\);console.log\\('frontmatter OK'\\)\")",
-      "Bash(echo \"--- exit: $? ---\")"
+      "Bash(echo \"--- exit: $? ---\")",
+      "Bash(node -e \"const m=require\\('gray-matter'\\);m\\(require\\('fs'\\).readFileSync\\('content/blog/kayak-fishing-for-beginners.mdx','utf8'\\)\\);console.log\\('frontmatter OK'\\)\")",
+      "Bash(node -e \"require\\('fs'\\).readFileSync\\('public/blog/kayak-fishing-for-beginners.svg','utf8'\\)\")",
+      "Bash(python3 -c \"import xml.dom.minidom; xml.dom.minidom.parse\\('public/blog/kayak-fishing-for-beginners.svg'\\); print\\('svg OK'\\)\")",
+      "Bash(node -e \"const m=require\\('gray-matter'\\);m\\(require\\('fs'\\).readFileSync\\('content/blog/best-pfds-for-kayak-fishing.mdx','utf8'\\)\\);console.log\\('frontmatter OK'\\)\")",
+      "Bash(python3 -c \"import xml.dom.minidom; xml.dom.minidom.parse\\('public/blog/best-pfds-for-kayak-fishing.svg'\\); print\\('svg OK'\\)\")",
+      "Bash(node -e \"const m=require\\('gray-matter'\\);m\\(require\\('fs'\\).readFileSync\\('content/blog/best-fishing-kayaks.mdx','utf8'\\)\\);console.log\\('frontmatter OK'\\)\")",
+      "Bash(python3 -c \"import xml.dom.minidom; xml.dom.minidom.parse\\('public/blog/best-fishing-kayaks.svg'\\); print\\('svg OK'\\)\")"
     ]
   }
 }
