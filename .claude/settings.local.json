@@ -20,7 +20,9 @@
       "Bash(sed -n '1,40p' app/llms.txt/route.ts)",
       "Bash(node scripts/build-search-index.mjs)",
       "Bash(node -e \"const m=require\\('gray-matter'\\);const fs=require\\('fs'\\);try{m\\(fs.readFileSync\\('content/blog/what-size-kayak-paddle-do-i-need.mdx','utf8'\\)\\)}catch\\(e\\){console.log\\(e.message\\)}\")",
-      "Bash(node -e \"const m=require\\('gray-matter'\\);m\\(require\\('fs'\\).readFileSync\\('content/blog/best-kids-kayak-paddles.mdx','utf8'\\)\\);console.log\\('frontmatter OK'\\)\")"
+      "Bash(node -e \"const m=require\\('gray-matter'\\);m\\(require\\('fs'\\).readFileSync\\('content/blog/best-kids-kayak-paddles.mdx','utf8'\\)\\);console.log\\('frontmatter OK'\\)\")",
+      "Bash(node -e \"const m=require\\('gray-matter'\\);m\\(require\\('fs'\\).readFileSync\\('content/blog/best-kayak-fishing-paddles.mdx','utf8'\\)\\);console.log\\('frontmatter OK'\\)\")",
+      "Bash(echo \"--- exit: $? ---\")"
     ]
   }
 }

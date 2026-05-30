@@ -32,6 +32,17 @@ const nextConfig = {
      * Next.js 默认就有这俩，这里显式声明是为了未来微调时一目了然。
      */
     formats: ['image/avif', 'image/webp'],
+
+    /**
+     * 允许 next/image 渲染 SVG。
+     * --------------------------------------------------------------
+     * 默认 next/image 出于安全考虑禁用 SVG（防止用户上传含脚本的 SVG）。
+     * 我们的 hero 图（public/blog/*.svg）全部是仓库内自己手写、版本受控的
+     * 可信资源，不接受外部上传，因此开启是安全的。
+     * 同时附加严格 CSP：禁脚本 + sandbox，即使万一被注入也无法执行。
+     */
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
   // 让 RSS / sitemap 路由能拿到正确的站点 URL。

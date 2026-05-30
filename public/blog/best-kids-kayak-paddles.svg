@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Best Kids Kayak Paddles — YakRigged guide">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#195a52"/>
+      <stop offset="1" stop-color="#4aaa97"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <g stroke="#d6efe9" stroke-opacity="0.3" stroke-width="2.5" fill="none">
+    <path d="M0 600 Q 300 575 600 600 T 1200 600"/>
+    <path d="M0 635 Q 300 612 600 635 T 1200 635"/>
+  </g>
+  <!-- small paddle motif -->
+  <g transform="translate(930,300) rotate(-27)" opacity="0.2">
+    <rect x="-220" y="-8" width="440" height="16" rx="8" fill="#eff8f6"/>
+    <ellipse cx="-248" cy="0" rx="48" ry="24" fill="#aedfd3"/>
+    <ellipse cx="248" cy="0" rx="48" ry="24" fill="#aedfd3"/>
+  </g>
+  <rect x="80" y="158" width="70" height="9" rx="4.5" fill="#f08a3e"/>
+  <text x="80" y="138" font-family="Arial, Helvetica, sans-serif" font-size="27" letter-spacing="5" font-weight="700" fill="#eff8f6">YAKRIGGED · KIDS</text>
+  <text x="78" y="300" font-family="Arial, Helvetica, sans-serif" font-size="92" font-weight="800" fill="#ffffff">Best Kids</text>
+  <text x="78" y="398" font-family="Arial, Helvetica, sans-serif" font-size="92" font-weight="800" fill="#ffffff">Kayak <tspan fill="#f08a3e">Paddles</tspan></text>
+  <text x="80" y="470" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="500" fill="#eff8f6">Why weight matters most — sizing &amp; top picks</text>
+</svg>

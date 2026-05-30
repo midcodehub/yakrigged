@@ -21,7 +21,6 @@ import { NewsletterForm } from '@/components/NewsletterForm';
 import { CommunityBanner } from '@/components/CommunityBanner';
 import { GiscusComments } from '@/components/GiscusComments';
 import { mdxComponents } from '@/lib/mdx-components';
-import { SITE } from '@/lib/consts';
 import {
   authorToSlug,
   getAllPosts,
@@ -52,6 +51,11 @@ export function generateMetadata({
     description: post.data.description,
     authors: [{ name: post.data.author }],
     alternates: { canonical: url },
+    // 注意：不在这里设 openGraph/twitter 的 images。
+    // 社交卡片统一由文件约定 opengraph-image.tsx 动态生成 PNG，
+    // Next 会自动注入 og:image / twitter:image。
+    // （heroImage 可能是 SVG，而 FB/Twitter 不渲染 SVG 社交卡，
+    //   所以 heroImage 只用于页面内 hero 展示，不作 og:image。）
     openGraph: {
       type: 'article',
       title: post.data.title,
@@ -61,13 +65,11 @@ export function generateMetadata({
       modifiedTime: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
       authors: [post.data.author],
       tags: post.data.tags,
-      images: [post.data.heroImage ?? SITE.defaultOgImage],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.data.title,
       description: post.data.description,
-      images: [post.data.heroImage ?? SITE.defaultOgImage],
     },
   };
 }
