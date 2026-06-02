@@ -29,7 +29,9 @@
       "Bash(node -e \"const m=require\\('gray-matter'\\);m\\(require\\('fs'\\).readFileSync\\('content/blog/best-pfds-for-kayak-fishing.mdx','utf8'\\)\\);console.log\\('frontmatter OK'\\)\")",
       "Bash(python3 -c \"import xml.dom.minidom; xml.dom.minidom.parse\\('public/blog/best-pfds-for-kayak-fishing.svg'\\); print\\('svg OK'\\)\")",
       "Bash(node -e \"const m=require\\('gray-matter'\\);m\\(require\\('fs'\\).readFileSync\\('content/blog/best-fishing-kayaks.mdx','utf8'\\)\\);console.log\\('frontmatter OK'\\)\")",
-      "Bash(python3 -c \"import xml.dom.minidom; xml.dom.minidom.parse\\('public/blog/best-fishing-kayaks.svg'\\); print\\('svg OK'\\)\")"
+      "Bash(python3 -c \"import xml.dom.minidom; xml.dom.minidom.parse\\('public/blog/best-fishing-kayaks.svg'\\); print\\('svg OK'\\)\")",
+      "Bash(node -e 'const m=require\\('\\\\''gray-matter'\\\\''\\);m\\(require\\('\\\\''fs'\\\\''\\).readFileSync\\('\\\\''content/blog/__TRACKED_VAR__.mdx'\\\\'','\\\\''utf8'\\\\''\\)\\)')",
+      "Bash(python3 -c 'import xml.dom.minidom; xml.dom.minidom.parse\\('\\\\''public/blog/__TRACKED_VAR__.svg'\\\\''\\)')"
     ]
   }
 }

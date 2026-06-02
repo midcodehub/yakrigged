@@ -48,6 +48,22 @@ export interface FAQItem {
   a: string;
 }
 
+/**
+ * 榜单条目 —— "best of" roundup 文章里的每个产品。
+ * 用于生成 Schema.org ItemList(of Product) JSON-LD，让 Google/AI 把整篇
+ * 理解成"一组带价格的产品推荐"，提升富媒体与 AI 引用概率。
+ * 与单品 `review`(winner) 并存：review 出 Review 星级，products 出 ItemList。
+ */
+export interface ProductItem {
+  /** 产品名（必填） */
+  name: string;
+  brand?: string;
+  /** Amazon ASIN —— 用于在 schema 里拼出 offers.url（带联盟 tag） */
+  asin?: string;
+  /** 价格（可选，填了才进 offers） */
+  price?: { currency: string; amount: number };
+}
+
 /** 单篇文章解析后的形状（前端使用的是这个） */
 export interface Post {
   slug: string;
@@ -68,6 +84,8 @@ export interface Post {
     review?: ReviewMeta;
     /** FAQ 列表（任何文章可挂） */
     faq?: FAQItem[];
+    /** 榜单产品列表（roundup 文章用，出 ItemList schema） */
+    products?: ProductItem[];
   };
   /** 自动算出的阅读时长（"5 min read"） */
   readingTime: string;
@@ -113,7 +131,37 @@ function normalizeFrontmatter(
     draft: Boolean(raw.draft),
     review: normalizeReview(raw.review, slug),
     faq: normalizeFaq(raw.faq, slug),
+    products: normalizeProducts(raw.products, slug),
   };
+}
+
+/** 榜单产品列表校验：必须是数组，每项必须有 name；price 形状同 review.price */
+function normalizeProducts(raw: unknown, slug: string): ProductItem[] | undefined {
+  if (!raw) return undefined;
+  if (!Array.isArray(raw)) {
+    throw new Error(`[${slug}] frontmatter.products 必须是数组`);
+  }
+  return raw.map((item, i) => {
+    if (!item || typeof item !== 'object') {
+      throw new Error(`[${slug}] frontmatter.products[${i}] 必须是对象`);
+    }
+    const it = item as Record<string, unknown>;
+    if (typeof it.name !== 'string') {
+      throw new Error(`[${slug}] frontmatter.products[${i}].name 必填`);
+    }
+    const product: ProductItem = {
+      name: it.name,
+      brand: typeof it.brand === 'string' ? it.brand : undefined,
+      asin: typeof it.asin === 'string' ? it.asin : undefined,
+    };
+    if (it.price && typeof it.price === 'object') {
+      const p = it.price as Record<string, unknown>;
+      if (typeof p.currency === 'string' && Number.isFinite(Number(p.amount))) {
+        product.price = { currency: p.currency, amount: Number(p.amount) };
+      }
+    }
+    return product;
+  });
 }
 
 /** 评测元数据校验：只要存在就必须有 productName & rating，否则报错 */

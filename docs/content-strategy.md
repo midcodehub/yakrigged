@@ -85,11 +85,17 @@
 
 | Spoke | Priority | Target Keyword |
 |-------|----------|---------------|
-| Best pedal kayaks for fishing | 🔴 High | "best pedal fishing kayak" |
-| Best budget fishing kayaks | 🔴 High | "best fishing kayak under 1000" |
-| Sit-on-top vs sit-in for fishing | 🟡 Med | "sit on top vs sit in kayak fishing" |
-| Best tandem fishing kayaks | 🟡 Med | "best tandem fishing kayak" |
-| Inflatable fishing kayaks | 🟢 Low | "inflatable fishing kayak review" |
+| Best pedal fishing kayaks | ✅ `best-pedal-fishing-kayaks` | "pedal fishing kayak" + "fishing kayak with pedals"(同意图合并) |
+| Old Town 品牌页 | ✅ `old-town-fishing-kayaks` | "old town fishing kayak" |
+| Pelican 品牌页 | ✅ `pelican-fishing-kayaks` | "pelican fishing kayak" |
+| Best inflatable fishing kayaks | ✅ `best-inflatable-fishing-kayaks` | "inflatable fishing kayak" |
+| Best tandem / 2-person fishing kayaks | ✅ `best-2-person-fishing-kayaks` | "2 person fishing kayak" |
+| Motorized fishing kayaks | ✅ `motorized-fishing-kayaks` | "fishing kayak with motor" |
+| Best budget fishing kayaks | ⬜ 待写 | "best fishing kayak under 1000" |
+| Sit-on-top vs sit-in for fishing | ⬜ 待写 | "sit on top vs sit in kayak fishing" |
+
+> **schema 增强已落地**：`lib/posts.ts` 加 `products` frontmatter + `lib/schema.ts` 加 `productRoundupSchema`(ItemList of Product) + 详情页注入。所有 roundup 文章可挂 `products:` 数组出 ItemList 结构化数据(只发 offers 价格,不给第三方产品塞自评 review 星级)。
+> **关键词意图**：`pedal fishing kayak`=`fishing kayak with pedals` 同意图合并一页；`fishing kayak`/`best fishing kayak` 由 Hub 承接不另建页；品牌词各自独立页。
 
 ### Cluster 6: Kayak Paddles 🟡 (Hub 已建立)
 

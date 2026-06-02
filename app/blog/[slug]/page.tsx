@@ -29,7 +29,12 @@ import {
   tagToSlug,
 } from '@/lib/posts';
 import { getAuthorByName } from '@/lib/authors';
-import { articleAndReviewSchema, faqSchema } from '@/lib/schema';
+import {
+  articleAndReviewSchema,
+  faqSchema,
+  productRoundupSchema,
+} from '@/lib/schema';
+import { SITE } from '@/lib/consts';
 
 /** 让 Next.js 构建时为每个 slug 生成静态 HTML */
 export function generateStaticParams() {
@@ -88,9 +93,14 @@ export default function BlogPostPage({
     .slice(0, 3);
 
   // Schema.org：Article（必发）+ Review（仅评测文章）+ FAQPage（有 FAQ 才发）
+  //            + ItemList of Product（roundup 文章有 products 才发）
   const schemas = articleAndReviewSchema(post);
   if (post.data.faq && post.data.faq.length > 0) {
     schemas.push(faqSchema(post.data.faq));
+  }
+  if (post.data.products && post.data.products.length > 0) {
+    const base = SITE.url.replace(/\/$/, '');
+    schemas.push(productRoundupSchema(post.data.products, `${base}/blog/${post.slug}`));
   }
 
   return (

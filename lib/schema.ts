@@ -9,8 +9,9 @@
  *   - 集中后类型签名清晰，避免散落在 page 里重复写
  *   - 单元测试 / lint 时更好抓
  */
-import type { Post, ReviewMeta, FAQItem } from './posts';
+import type { Post, ReviewMeta, FAQItem, ProductItem } from './posts';
 import { SITE } from './consts';
+import { buildAmazonUrl } from './amazon';
 
 const BASE = SITE.url.replace(/\/$/, '');
 
@@ -177,6 +178,52 @@ export function faqSchema(items: FAQItem[]) {
         text: item.a,
       },
     })),
+  };
+}
+
+/**
+ * ItemList(of Product) —— "best of" roundup 文章用。
+ * --------------------------------------------------
+ * 把整篇榜单标成一个有序的 Product 列表，每个 Product 带 brand + offers(价格)。
+ * 价值：
+ *   - Google 更容易把页面理解为"产品对比/推荐"，提升富媒体资格
+ *   - AI 搜索引擎（AI Overview/Perplexity）能直接提取"产品 + 价格 + 排名"
+ *
+ * 设计取舍：只发 offers(客观价格)，**不**给每个第三方产品塞自评 Review 星级
+ * ——避免在多款第三方产品上滥用 review 标记（Google 可能判为操纵）。
+ * 文章 winner 的星级仍由单品 review schema(articleAndReviewSchema)负责。
+ */
+export function productRoundupSchema(
+  products: ProductItem[],
+  pageUrl: string,
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    url: pageUrl,
+    numberOfItems: products.length,
+    itemListElement: products.map((p, i) => {
+      const item: JsonLd = {
+        '@type': 'Product',
+        name: p.name,
+      };
+      if (p.brand) item.brand = { '@type': 'Brand', name: p.brand };
+      if (p.asin) item.url = buildAmazonUrl(p.asin);
+      if (p.price) {
+        item.offers = {
+          '@type': 'Offer',
+          price: p.price.amount,
+          priceCurrency: p.price.currency,
+          availability: 'https://schema.org/InStock',
+          ...(p.asin ? { url: buildAmazonUrl(p.asin) } : {}),
+        };
+      }
+      return {
+        '@type': 'ListItem',
+        position: i + 1,
+        item,
+      };
+    }),
   };
 }
 

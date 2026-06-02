@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Best Inflatable Fishing Kayaks 2026 — YakRigged buyer's guide">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#144841"/>
+      <stop offset="1" stop-color="#2d8c7c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <g stroke="#7cc8b6" stroke-opacity="0.28" stroke-width="2.5" fill="none">
+    <path d="M0 600 Q 300 575 600 600 T 1200 600"/>
+    <path d="M0 635 Q 300 612 600 635 T 1200 635"/>
+  </g>
+  <!-- inflatable hull motif (tubed sides) -->
+  <g transform="translate(885,425)" opacity="0.2" fill="#eff8f6">
+    <path d="M-255 0 q 36 -42 255 -42 q 219 0 255 42 q -36 42 -255 42 q -219 0 -255 -42 z"/>
+    <path d="M-205 0 q 28 -22 205 -22 q 177 0 205 22 q -28 22 -205 22 q -177 0 -205 -22 z" fill="#2d8c7c" fill-opacity="0.8"/>
+  </g>
+  <rect x="80" y="158" width="70" height="9" rx="4.5" fill="#f08a3e"/>
+  <text x="80" y="138" font-family="Arial, Helvetica, sans-serif" font-size="27" letter-spacing="5" font-weight="700" fill="#eff8f6">YAKRIGGED · BUYER&#39;S GUIDE</text>
+  <text x="78" y="300" font-family="Arial, Helvetica, sans-serif" font-size="84" font-weight="800" fill="#ffffff">Best Inflatable</text>
+  <text x="78" y="394" font-family="Arial, Helvetica, sans-serif" font-size="84" font-weight="800" fill="#ffffff">Fishing <tspan fill="#f08a3e">Kayaks</tspan></text>
+  <text x="80" y="464" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="500" fill="#eff8f6">Packable picks that actually fish</text>
+</svg>
