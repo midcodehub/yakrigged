@@ -31,7 +31,12 @@
       "Bash(node -e \"const m=require\\('gray-matter'\\);m\\(require\\('fs'\\).readFileSync\\('content/blog/best-fishing-kayaks.mdx','utf8'\\)\\);console.log\\('frontmatter OK'\\)\")",
       "Bash(python3 -c \"import xml.dom.minidom; xml.dom.minidom.parse\\('public/blog/best-fishing-kayaks.svg'\\); print\\('svg OK'\\)\")",
       "Bash(node -e 'const m=require\\('\\\\''gray-matter'\\\\''\\);m\\(require\\('\\\\''fs'\\\\''\\).readFileSync\\('\\\\''content/blog/__TRACKED_VAR__.mdx'\\\\'','\\\\''utf8'\\\\''\\)\\)')",
-      "Bash(python3 -c 'import xml.dom.minidom; xml.dom.minidom.parse\\('\\\\''public/blog/__TRACKED_VAR__.svg'\\\\''\\)')"
+      "Bash(python3 -c 'import xml.dom.minidom; xml.dom.minidom.parse\\('\\\\''public/blog/__TRACKED_VAR__.svg'\\\\''\\)')",
+      "Bash(sed -i '' 's|__TRACKED_VAR__|source=\"Field notes, a decade of buying and rigging kayaks\"|' best-fishing-kayaks.mdx)",
+      "Bash(sed -i '' 's|__TRACKED_VAR__|source=\"Owns six kayaks, inflatables included\"|' best-inflatable-fishing-kayaks.mdx)",
+      "Bash(sed -i '' 's|__TRACKED_VAR__|source=\"On-water safety habits, 12 seasons paddling\"|' best-pfds-for-kayak-fishing.mdx)",
+      "Bash(sed -i '' 's|__TRACKED_VAR__|source=\"Years of family and tandem trips\"|' best-2-person-fishing-kayaks.mdx)",
+      "Bash(sed -i '' 's|__TRACKED_VAR__|source=\"Pedal-drive kayaks owned and fished since 2018\"|' best-pedal-fishing-kayaks.mdx)"
     ]
   }
 }
