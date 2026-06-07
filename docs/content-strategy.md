@@ -35,7 +35,7 @@
 | Spoke | Priority | Target Keyword |
 |-------|----------|---------------|
 | Rod holders (已有) | ✅ | "flush mount rod holders kayak" |
-| Anchor trolley install | 🔴 High | "kayak anchor trolley" |
+| Anchor trolley install | ✅ `how-to-install-anchor-trolley-kayak` | "kayak anchor trolley"（内联覆盖 Cluster 4 anchoring techniques,同意图合并避免拆页 cannibalize；含 2 个真实 YouTube + 带来源 StatBlock）|
 | Crate & milk crate rigging | 🔴 High | "kayak fishing crate setup" |
 | Paddle holder options | 🟡 Med | "kayak paddle holder" |
 | Kayak seat upgrade | 🟡 Med | "best kayak fishing seat" |
@@ -70,7 +70,7 @@
 | Spoke | Priority | Target Keyword |
 |-------|----------|---------------|
 | Trolling from a kayak | 🔴 High | "how to troll from a kayak" |
-| Anchoring techniques | 🔴 High | "how to anchor a kayak for fishing" |
+| Anchoring techniques | ✅ 已内联于 `how-to-install-anchor-trolley-kayak` | "how to anchor a kayak for fishing"（与 anchor trolley 同意图合并,不另建页）|
 | Sight fishing from kayak | 🟡 Med | "sight fishing kayak" |
 | Kayak fly fishing setup | 🟡 Med | "fly fishing from kayak" |
 | Landing big fish from kayak | 🟡 Med | "landing fish from kayak" |
@@ -123,7 +123,7 @@
 |--------|------|------|
 | 1 | Cluster 2 Hub (rigging guide) | 高搜索量 + 已有 spoke 可链接 |
 | 2 | Best PFDs for kayak fishing | 高商业价值（affiliate）+ 低竞争 |
-| 3 | Anchor trolley install | 高搜索量 + 实操内容 AI 爱引用 |
+| 3 | ✅ Anchor trolley install (`how-to-install-anchor-trolley-kayak`) | 高搜索量 + 实操内容 AI 爱引用 — 已完成 |
 | 4 | Cluster 5 Hub (best kayaks) | 极高搜索量但竞争激烈 |
 | 5 | Trolling from a kayak | 技巧类内容 AI 引用率高 |
 
