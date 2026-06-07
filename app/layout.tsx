@@ -77,7 +77,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head />
-      <body className="min-h-screen bg-white font-sans text-ink-900 antialiased">
+      <body className="min-h-screen bg-paper font-sans text-ink-700 antialiased">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-brand-700 focus:px-3 focus:py-1.5 focus:text-white"

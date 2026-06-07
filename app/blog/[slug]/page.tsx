@@ -123,41 +123,41 @@ export default function BlogPostPage({
       />
 
       {/* Hero / 元信息 */}
-      <header className="mb-8">
-        <div className="mb-3 flex flex-wrap items-center gap-2 text-xs uppercase tracking-wider text-brand-600">
+      <header className="mb-8 border-b border-sand-200 pb-8">
+        <div className="mb-4 flex flex-wrap items-center gap-2 text-xs text-ink-500">
           <Link
             href={`/blog?category=${post.data.category}`}
-            className="rounded-full bg-brand-50 px-2 py-0.5 font-semibold hover:bg-brand-100"
+            className="font-semibold uppercase tracking-[0.14em] text-brand-700 hover:text-brand-800"
           >
             {post.data.category}
           </Link>
-          <span aria-hidden>·</span>
+          <span aria-hidden className="text-sand-300">·</span>
           <FormattedDate date={post.data.pubDate} />
           {post.data.updatedDate && (
             <>
-              <span aria-hidden>·</span>
+              <span aria-hidden className="text-sand-300">·</span>
               <span>
                 Updated <FormattedDate date={post.data.updatedDate} />
               </span>
             </>
           )}
-          <span aria-hidden>·</span>
-          <span className="normal-case tracking-normal text-ink-500">
-            {post.readingTime}
-          </span>
+          <span aria-hidden className="text-sand-300">·</span>
+          <span>{post.readingTime}</span>
         </div>
 
-        <h1 className="text-3xl font-bold leading-tight text-ink-900 sm:text-4xl">
+        <h1 className="text-4xl font-semibold leading-[1.1] text-ink-900 sm:text-5xl">
           {post.data.title}
         </h1>
-        <p className="mt-3 text-lg text-ink-700">{post.data.description}</p>
+        <p className="mt-4 text-xl leading-relaxed text-ink-600">
+          {post.data.description}
+        </p>
 
-        <p className="mt-4 text-sm text-ink-500">
+        <p className="mt-5 text-sm text-ink-500">
           By{' '}
           {getAuthorByName(post.data.author) ? (
             <Link
               href={`/authors/${authorToSlug(post.data.author)}`}
-              className="font-medium text-brand-700 hover:underline"
+              className="font-medium text-brand-700 hover:text-accent-600 hover:underline"
             >
               {post.data.author}
             </Link>
@@ -168,7 +168,7 @@ export default function BlogPostPage({
       </header>
 
       {post.data.heroImage && (
-        <figure className="mb-10 overflow-hidden rounded-xl border border-brand-100 bg-brand-50">
+        <figure className="mb-10 overflow-hidden rounded-xl bg-sand-100 ring-1 ring-sand-200">
           {/*
             文章 hero 用 1200x675 (16:9) 作为默认 intrinsic 尺寸 ——
             实际渲染由 CSS 控制（max-w-3xl 容器 + h-auto w-full）。
@@ -184,15 +184,17 @@ export default function BlogPostPage({
             className="h-auto w-full"
           />
           {post.data.heroImageAlt && (
-            <figcaption className="px-4 py-2 text-xs text-ink-500">
+            <figcaption className="border-t border-sand-200 px-4 py-2.5 text-xs text-ink-500">
               {post.data.heroImageAlt}
             </figcaption>
           )}
         </figure>
       )}
 
-      {/* 正文：@tailwindcss/typography 自动美化输出 */}
-      <div className="prose prose-lg max-w-none prose-headings:text-ink-900 prose-a:text-brand-700 prose-a:no-underline hover:prose-a:underline prose-img:rounded-lg">
+      {/* 正文：@tailwindcss/typography 自动美化输出。
+          编辑风精修：暖墨正文 + 衬线标题(全局 .prose 规则) + 加大 h2 +
+          品牌色链接(hover 转橙) + 图片细边 + 暖色分隔线/表头。 */}
+      <div className="prose prose-lg max-w-none text-ink-700 prose-headings:font-semibold prose-headings:text-ink-900 prose-headings:tracking-tight prose-h2:mt-12 prose-h2:text-3xl prose-h3:text-xl prose-a:font-medium prose-a:text-brand-700 prose-a:underline-offset-2 prose-a:no-underline hover:prose-a:text-accent-600 hover:prose-a:underline prose-strong:text-ink-900 prose-blockquote:border-l-brand-600 prose-blockquote:text-ink-700 prose-th:text-ink-900 prose-td:text-ink-700 prose-hr:border-sand-200 prose-img:rounded-lg prose-img:ring-1 prose-img:ring-sand-200">
         <MDXRemote
           source={post.content}
           components={mdxComponents}
@@ -216,23 +218,23 @@ export default function BlogPostPage({
           注意：与上面 faqSchema() JSON-LD 字段必须保持一致，
           否则 Google 会标记为 "structured data mismatch"。 */}
       {post.data.faq && post.data.faq.length > 0 && (
-        <section className="mt-12 border-t border-brand-100 pt-8">
-          <h2 className="mb-4 text-xl font-bold text-ink-900">
+        <section className="mt-12 border-t border-sand-200 pt-8">
+          <h2 className="mb-5 text-2xl font-semibold text-ink-900">
             Frequently asked questions
           </h2>
-          <div className="space-y-2">
+          <div className="space-y-2.5">
             {post.data.faq.map((item, i) => (
               <details
                 key={i}
-                className="group rounded-lg border border-brand-100 bg-white px-4 py-3 open:bg-brand-50/30"
+                className="group rounded-lg bg-white px-5 py-4 ring-1 ring-sand-200 open:bg-sand-50/70"
               >
                 <summary className="cursor-pointer list-none font-semibold text-ink-900 marker:hidden">
-                  <span className="mr-2 inline-block transition-transform group-open:rotate-90">
+                  <span className="mr-2 inline-block font-bold text-accent-500 transition-transform group-open:rotate-90">
                     ›
                   </span>
                   {item.q}
                 </summary>
-                <p className="mt-2 pl-5 text-sm text-ink-700">{item.a}</p>
+                <p className="mt-2.5 pl-5 text-sm leading-relaxed text-ink-600">{item.a}</p>
               </details>
             ))}
           </div>
@@ -241,8 +243,8 @@ export default function BlogPostPage({
 
       {/* 标签 */}
       {post.data.tags.length > 0 && (
-        <footer className="mt-12 border-t border-brand-100 pt-8">
-          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-ink-500">
+        <footer className="mt-12 border-t border-sand-200 pt-8">
+          <h2 className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink-500">
             Tags
           </h2>
           <ul className="flex flex-wrap gap-2">
@@ -250,7 +252,7 @@ export default function BlogPostPage({
               <li key={tag}>
                 <Link
                   href={`/blog/tag/${tagToSlug(tag)}`}
-                  className="rounded-full border border-brand-200 px-3 py-1 text-xs text-brand-700 hover:bg-brand-50"
+                  className="rounded-full bg-sand-100 px-3 py-1 text-xs text-ink-700 transition-colors hover:bg-brand-50 hover:text-brand-700"
                 >
                   #{tag}
                 </Link>
@@ -266,7 +268,7 @@ export default function BlogPostPage({
         
         <GiscusComments />
         
-        <div className="rounded-2xl border border-brand-100 bg-brand-50/40 p-6 sm:p-8">
+        <div className="rounded-2xl bg-white p-6 ring-1 ring-sand-200 sm:p-8">
           <NewsletterForm
             source="article"
             heading="Not on Facebook? Get weekly tips via email."
@@ -277,8 +279,8 @@ export default function BlogPostPage({
 
       {/* 相关文章 */}
       {related.length > 0 && (
-        <section className="mt-16 border-t border-brand-100 pt-10">
-          <h2 className="mb-6 text-xl font-bold text-ink-900">
+        <section className="mt-16 border-t border-sand-200 pt-10">
+          <h2 className="mb-6 text-2xl font-semibold text-ink-900">
             More from {post.data.category}
           </h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

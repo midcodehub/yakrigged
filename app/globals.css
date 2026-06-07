@@ -5,35 +5,67 @@
 @plugin "@tailwindcss/typography";
 
 /* ============================================================
- * Design tokens (Tailwind v4 用 @theme 直接生成 --color-* 变量)
- * 模板里可以用 bg-brand-600 / text-brand-50 等类名
+ * Design tokens —— 高端户外杂志风（2026 重构）
+ * ------------------------------------------------------------
+ * Tailwind v4 用 @theme 直接生成 --color-* / 阴影等工具类。
+ * 设计基调：
+ *   - 暖纸色底（不是惨白），营造杂志/印刷质感
+ *   - 克制的湖水蓝绿做品牌脊梁，日落橙只在 CTA/关键处稀有出现
+ *   - 标题用展示衬线 Fraunces（高级感最大杠杆），正文用 Inter
+ *   - 柔和带暖调的阴影，少即是多
+ * 改这一处，全站工具类（bg-paper / text-ink-700 / shadow-md…）统一生效。
  * ============================================================ */
 @theme {
-  /* 品牌色：偏深的湖水蓝绿 */
-  --color-brand-50:  #eff8f6;
-  --color-brand-100: #d6efe9;
-  --color-brand-200: #aedfd3;
-  --color-brand-300: #7cc8b6;
-  --color-brand-400: #4aaa97;
-  --color-brand-500: #2d8c7c;
-  --color-brand-600: #1f7065;
-  --color-brand-700: #195a52;
-  --color-brand-800: #144841;
-  --color-brand-900: #0f3833;
+  /* ---- 品牌色：深湖水蓝绿（沿用并微调得更润）---- */
+  --color-brand-50:  #eef7f4;
+  --color-brand-100: #d6ece4;
+  --color-brand-200: #a9d8c9;
+  --color-brand-300: #74bda8;
+  --color-brand-400: #459e88;
+  --color-brand-500: #2a8270;
+  --color-brand-600: #1f6a5b;
+  --color-brand-700: #1a564b;
+  --color-brand-800: #163f38;
+  --color-brand-900: #0f3530;   /* hero 深色场 */
 
-  /* 强调色：日落橙，用于 CTA */
-  --color-accent-500: #f08a3e;
-  --color-accent-600: #d97323;
+  /* ---- 强调色：日落橙（克制使用，仅 CTA / 关键强调）---- */
+  --color-accent-400: #f4a45f;
+  --color-accent-500: #ec8334;
+  --color-accent-600: #d56a1c;
 
-  /* 中性色 */
-  --color-ink-900: #0b1220;
-  --color-ink-700: #2a3344;
-  --color-ink-500: #5b667a;
+  /* ---- 暖纸 / 沙色中性梯（新增，杂志暖调的来源）---- */
+  --color-paper:    #f7f4ee;    /* 页面背景：暖白纸感 */
+  --color-sand-50:  #faf8f3;
+  --color-sand-100: #f1ece2;
+  --color-sand-200: #e5dccb;
+  --color-sand-300: #d2c4ab;
+  --color-sand-400: #b1a083;
 
-  /* 字体栈 */
+  /* ---- 墨色文字梯（偏暖近黑，比纯黑更有质感）---- */
+  --color-ink-900: #1c1a16;     /* 标题 */
+  --color-ink-800: #2c2823;
+  --color-ink-700: #46413a;     /* 正文 */
+  --color-ink-600: #5f594f;
+  --color-ink-500: #6a6253;     /* 元信息（已调深，确保暖纸底上小字达 WCAG AA 4.5:1）*/
+  --color-ink-400: #a89e8d;     /* 仅装饰用，勿用于正文 */
+
+  /* ---- 字体栈 ---- */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-serif: "Source Serif Pro", ui-serif, Georgia, Cambria, serif;
+  /* 展示衬线：默认走"高质量系统衬线栈" —— 户外杂志感的来源。
+     选这个而非 webfont 的理由：零字体下载 = 最优 Core Web Vitals（你定的性能优先），
+     且本地可构建、各平台优雅回退（Apple→Iowan Old Style，Win→Cambria/Palatino，兜底 Georgia）。
+     想换更有个性的 Fraunces：在 layout.tsx 用 next/font 加载它，再把下面首项换成 var(--font-fraunces)
+     即可（本地沙箱封了 fonts.gstatic.com 装不了，但 Vercel 构建能正常拉取）。 */
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
+    Georgia, Cambria, "Times New Roman", serif;
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
+    Georgia, Cambria, serif;
+
+  /* ---- 阴影：更柔、带暖调，克制 ---- */
+  --shadow-sm: 0 1px 2px rgba(28, 26, 22, 0.04), 0 1px 3px rgba(28, 26, 22, 0.05);
+  --shadow-md: 0 4px 14px rgba(28, 26, 22, 0.06), 0 2px 5px rgba(28, 26, 22, 0.05);
+  --shadow-lg: 0 16px 40px rgba(28, 26, 22, 0.10), 0 5px 12px rgba(28, 26, 22, 0.06);
 }
 
 /* ============================================================
@@ -45,8 +77,33 @@ html {
 
 body {
   font-family: var(--font-sans);
+  background-color: var(--color-paper);
+  color: var(--color-ink-700);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* 标题统一用展示衬线 —— 一处生效，全站立刻有杂志感。
+   只改 font-family + 字距（颜色/字号仍由各处 utility 控制，
+   所以 hero 上的 text-white、font-bold 等都不会被覆盖）。 */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.012em;
+}
+
+/* MDX 正文里的标题同样走展示衬线（与上面同理，prose 内单独点名一次） */
+.prose :where(h1, h2, h3, h4):not(:where([class~="not-prose"] *)) {
+  font-family: var(--font-display);
+  letter-spacing: -0.012em;
+}
+
+/* 文本选区：暖橙微染，呼应强调色 */
+::selection {
+  background-color: color-mix(in srgb, var(--color-accent-500) 22%, transparent);
+  color: var(--color-ink-900);
 }
 
 :focus-visible {

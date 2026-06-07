@@ -31,10 +31,12 @@ export function StatBlock({ value, label, source }: Props) {
   return (
     <div
       data-geo="statistic"
-      className="my-4 inline-flex items-baseline gap-2 rounded-lg bg-brand-50 px-4 py-2.5"
+      className="my-5 inline-flex items-baseline gap-2.5 rounded-lg bg-sand-100 px-4 py-2.5"
     >
-      <span className="text-xl font-bold text-brand-700">{value}</span>
-      <span className="text-sm text-ink-700">
+      <span className="font-display text-2xl font-semibold leading-none text-brand-700">
+        {value}
+      </span>
+      <span className="text-sm text-ink-600">
         {label}
         {source && (
           <span className="ml-1 text-xs text-ink-500">({source})</span>

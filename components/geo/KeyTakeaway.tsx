@@ -28,12 +28,12 @@ export function KeyTakeaway({ children, label = 'Key takeaway' }: Props) {
       data-geo="key-takeaway"
       role="note"
       aria-label={label}
-      className="my-6 rounded-lg border-l-4 border-brand-500 bg-brand-50/50 p-4 sm:p-5"
+      className="my-8 rounded-r-lg border-l-[3px] border-brand-600 bg-sand-50 p-5 sm:p-6"
     >
-      <p className="mb-1 text-xs font-bold uppercase tracking-wider text-brand-700">
+      <p className="mb-1.5 text-xs font-bold uppercase tracking-[0.16em] text-brand-700">
         {label}
       </p>
-      <div className="text-sm leading-relaxed text-ink-900 [&>p]:m-0">
+      <div className="text-[1.05rem] leading-relaxed text-ink-800 [&>p]:m-0">
         {children}
       </div>
     </aside>

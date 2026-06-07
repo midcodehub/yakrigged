@@ -25,15 +25,15 @@ export function ExpertQuote({ children, name, title, source }: Props) {
   return (
     <figure
       data-geo="expert-quote"
-      className="my-6 rounded-lg border border-brand-100 bg-white p-5 shadow-sm"
+      className="my-8 border-l-2 border-accent-500 pl-5 sm:pl-6"
     >
-      <blockquote className="text-base italic leading-relaxed text-ink-700 [&>p]:m-0">
+      <blockquote className="font-display text-xl italic leading-relaxed text-ink-800 [&>p]:m-0">
         {children}
       </blockquote>
-      <figcaption className="mt-3 text-sm text-ink-500">
+      <figcaption className="mt-3 text-sm not-italic text-ink-500">
         — <strong className="font-semibold text-ink-900">{name}</strong>
         {title && <span>, {title}</span>}
-        {source && <span className="block text-xs text-ink-500 mt-0.5">{source}</span>}
+        {source && <span className="mt-0.5 block text-xs text-ink-500">{source}</span>}
       </figcaption>
     </figure>
   );
