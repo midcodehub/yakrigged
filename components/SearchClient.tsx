@@ -107,7 +107,7 @@ export function SearchClient({ initialQuery = '' }: { initialQuery?: string }) {
         placeholder="Search for rod holders, fish finders, lake names…"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        className="w-full rounded-xl border border-brand-200 bg-white px-4 py-3 text-lg shadow-sm outline-none ring-brand-400 focus:ring-2"
+        className="w-full rounded-xl border border-sand-300 bg-white px-4 py-3 text-lg shadow-sm outline-none ring-brand-500 focus:border-brand-400 focus:ring-2"
       />
 
       {/* 状态行 */}
@@ -125,15 +125,16 @@ export function SearchClient({ initialQuery = '' }: { initialQuery?: string }) {
 
       {/* 结果列表 */}
       {results.length > 0 && (
-        <ul className="mt-6 divide-y divide-brand-100 rounded-xl border border-brand-100 bg-white">
+        <ul className="mt-6 divide-y divide-sand-200 rounded-xl bg-white ring-1 ring-sand-200">
           {results.map(({ rec }) => (
-            <li key={rec.slug} className="p-5 hover:bg-brand-50/50">
+            <li key={rec.slug} className="p-5 transition-colors hover:bg-sand-50">
               <Link href={`/blog/${rec.slug}`} className="block">
-                <div className="mb-1 flex items-center gap-2 text-xs uppercase tracking-wider text-brand-600">
-                  <span className="rounded-full bg-brand-50 px-2 py-0.5 font-semibold">
+                <div className="mb-1.5 flex items-center gap-2 text-[0.7rem]">
+                  <span className="font-semibold uppercase tracking-[0.14em] text-brand-700">
                     {rec.category}
                   </span>
-                  <span className="text-ink-500 normal-case tracking-normal">
+                  <span aria-hidden className="text-sand-300">·</span>
+                  <span className="text-ink-500">
                     {new Date(rec.pubDate).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'short',
@@ -144,7 +145,7 @@ export function SearchClient({ initialQuery = '' }: { initialQuery?: string }) {
                 <h3 className="text-lg font-semibold text-ink-900">
                   {highlight(rec.title, tokens)}
                 </h3>
-                <p className="mt-1 text-sm text-ink-700">
+                <p className="mt-1 text-sm text-ink-600">
                   {highlight(rec.description, tokens)}
                 </p>
               </Link>
@@ -155,7 +156,7 @@ export function SearchClient({ initialQuery = '' }: { initialQuery?: string }) {
 
       {/* 空结果但有 query */}
       {index && tokens.length > 0 && results.length === 0 && (
-        <p className="mt-6 rounded-lg border border-dashed border-brand-200 p-6 text-center text-ink-500">
+        <p className="mt-6 rounded-lg border border-dashed border-sand-300 p-6 text-center text-ink-500">
           No matches. Try fewer or simpler keywords.
         </p>
       )}

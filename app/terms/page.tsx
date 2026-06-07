@@ -54,10 +54,10 @@ export default function TermsPage() {
       <Breadcrumbs items={[{ label: 'Terms' }]} />
 
       <header className="mb-8">
-        <h1 className="text-3xl font-bold leading-tight text-ink-900 sm:text-4xl">
+        <h1 className="text-4xl font-semibold leading-tight text-ink-900 sm:text-5xl">
           {doc.title}
         </h1>
-        <p className="mt-3 text-lg text-ink-700">{doc.description}</p>
+        <p className="mt-3 text-lg text-ink-600">{doc.description}</p>
         <p className="mt-4 text-sm text-ink-500">
           Last updated <FormattedDate date={doc.updatedDate} />
         </p>

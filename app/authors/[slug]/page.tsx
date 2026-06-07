@@ -81,20 +81,20 @@ export default function AuthorPage({ params }: { params: Params }) {
         {/* 有头像走 next/image，没头像走 initials 占位 —— 都从 <Avatar /> 走 */}
         <Avatar src={author.avatar} name={author.name} size={96} />
         <div>
-          <p className="text-sm uppercase tracking-wider text-brand-600">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-700">
             Author profile
           </p>
-          <h1 className="mt-1 text-3xl font-bold text-ink-900 sm:text-4xl">
+          <h1 className="mt-2 text-4xl font-semibold text-ink-900 sm:text-5xl">
             {author.name}
           </h1>
-          <p className="mt-1 text-ink-700">{author.title}</p>
+          <p className="mt-2 text-lg text-ink-600">{author.title}</p>
 
           {author.expertise && author.expertise.length > 0 && (
             <ul className="mt-3 flex flex-wrap gap-2">
               {author.expertise.map((tag) => (
                 <li
                   key={tag}
-                  className="rounded-full border border-brand-200 px-3 py-1 text-xs text-brand-700"
+                  className="rounded-full bg-sand-100 px-3 py-1 text-xs text-ink-700"
                 >
                   {tag}
                 </li>
@@ -129,7 +129,7 @@ export default function AuthorPage({ params }: { params: Params }) {
       </section>
 
       <section className="mt-12">
-        <h2 className="mb-6 text-2xl font-bold text-ink-900">
+        <h2 className="mb-6 text-2xl font-semibold text-ink-900">
           Articles by {author.name}
         </h2>
         {posts.length === 0 ? (

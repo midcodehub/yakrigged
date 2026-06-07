@@ -63,7 +63,7 @@ export function VerdictBox({
         <p className="text-xs font-semibold uppercase tracking-wider text-brand-700">
           Editor&apos;s verdict
         </p>
-        <h3 className="!mt-0 text-lg font-bold text-ink-900">{productName}</h3>
+        <h3 className="!mt-0 text-lg font-semibold text-ink-900">{productName}</h3>
       </header>
 
       <div className="space-y-4 p-5">

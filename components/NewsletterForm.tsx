@@ -184,7 +184,7 @@ export function NewsletterForm({
           value={email}
           disabled={state.phase === 'submitting'}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full rounded-lg border border-brand-200 bg-white px-3 py-2 text-sm outline-none ring-brand-400 focus:ring-2 disabled:opacity-60"
+          className="w-full rounded-lg border border-sand-300 bg-white px-3 py-2 text-sm outline-none ring-brand-500 focus:border-brand-400 focus:ring-2 disabled:opacity-60"
         />
         <button
           type="submit"
@@ -216,15 +216,15 @@ function containerClass(
   const base =
     phase === 'success' ? 'rounded-lg p-5 text-center' : '';
   if (layout === 'hero') {
-    return `${base} rounded-2xl border border-brand-200 bg-white p-8 shadow-sm`;
+    return `${base} rounded-2xl bg-white p-8 shadow-sm ring-1 ring-sand-200`;
   }
   if (layout === 'inline') {
     return phase === 'success'
-      ? 'rounded-lg border border-brand-200 bg-brand-50 p-5 text-center'
+      ? 'rounded-lg bg-sand-50 p-5 text-center ring-1 ring-sand-200'
       : '';
   }
   // card（默认）
   return phase === 'success'
-    ? 'rounded-lg border border-brand-200 bg-brand-50 p-5 text-center'
-    : 'rounded-lg border border-brand-200 bg-white p-4 shadow-sm';
+    ? 'rounded-lg bg-sand-50 p-5 text-center ring-1 ring-sand-200'
+    : 'rounded-lg bg-white p-4 shadow-sm ring-1 ring-sand-200';
 }

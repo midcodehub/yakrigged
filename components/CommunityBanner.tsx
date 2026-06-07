@@ -1,18 +1,27 @@
 export function CommunityBanner() {
   return (
-    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-brand-700 via-brand-600 to-brand-500 px-6 py-10 text-center text-white shadow-lg sm:px-10 sm:py-12">
-      {/* Decorative blobs */}
+    <div className="relative overflow-hidden rounded-2xl bg-brand-900 px-6 py-10 text-center text-white shadow-lg sm:px-10 sm:py-12">
+      {/* 等深线纹理 —— 与首页 hero / CTA banner 一致，取代通用 blur blob */}
+      <svg
+        aria-hidden
+        viewBox="0 0 1200 320"
+        preserveAspectRatio="xMidYMid slice"
+        className="pointer-events-none absolute inset-0 h-full w-full text-brand-300 opacity-[0.12]"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      >
+        <path d="M-40 90 C 240 55 460 140 700 90 S 1100 45 1320 105" />
+        <path d="M-40 170 C 250 135 450 220 690 170 S 1110 120 1320 185" />
+        <path d="M-40 250 C 240 215 460 300 700 248 S 1100 198 1320 265" />
+      </svg>
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-10 -top-10 h-64 w-64 rounded-full bg-brand-300/20 blur-3xl"
+        className="pointer-events-none absolute -bottom-16 -left-16 h-64 w-64 rounded-full bg-accent-500/15 blur-3xl"
       />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -bottom-16 -left-16 h-64 w-64 rounded-full bg-accent-500/20 blur-3xl"
-      />
-      
+
       <div className="relative mx-auto max-w-xl">
-        <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+        <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
           Show off your rig. Get help from experts.
         </h2>
         <p className="mt-4 text-lg leading-relaxed text-brand-50">

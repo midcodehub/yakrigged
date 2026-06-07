@@ -1,5 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#1f7065"/>
-  <path d="M10 40 C 22 30, 42 30, 54 40 L 50 46 C 40 38, 24 38, 14 46 Z" fill="#f08a3e"/>
-  <circle cx="32" cy="24" r="6" fill="#eff8f6"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="YakRigged">
+  <!-- 青色圆角徽章 -->
+  <rect width="64" height="64" rx="14" fill="#1a564b"/>
+  <!-- 俯视皮划艇艇身（米色尖头椭圆）-->
+  <path d="M32 12 C 40 20, 40 44, 32 52 C 24 44, 24 20, 32 12 Z" fill="#f7f4ee"/>
+  <!-- 座舱 -->
+  <ellipse cx="32" cy="32" rx="3" ry="5.2" fill="#1a564b"/>
+  <!-- 船桨（橙色，斜跨艇身）-->
+  <line x1="15" y1="41" x2="49" y2="23" stroke="#f4a45f" stroke-width="3.4" stroke-linecap="round"/>
 </svg>

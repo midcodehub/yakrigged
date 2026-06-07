@@ -61,13 +61,13 @@ export default function TagPage({ params }: { params: Params }) {
         ]}
       />
       <header className="mb-10">
-        <p className="text-sm uppercase tracking-wider text-brand-600">
+        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-700">
           Tag archive
         </p>
-        <h1 className="mt-1 text-3xl font-bold text-ink-900 sm:text-4xl">
+        <h1 className="mt-2 text-4xl font-semibold text-ink-900 sm:text-5xl">
           #{tag}
         </h1>
-        <p className="mt-3 text-ink-700">
+        <p className="mt-3 text-ink-600">
           {posts.length} {posts.length === 1 ? 'article' : 'articles'} ·{' '}
           <Link href="/blog" className="text-brand-700 hover:underline">
             ← back to all posts
@@ -83,8 +83,8 @@ export default function TagPage({ params }: { params: Params }) {
 
       {/* Related tags — cross-linking for crawl depth and topic clustering */}
       {relatedTags.length > 0 && (
-        <section className="mt-12 border-t border-brand-100 pt-6">
-          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-ink-500">
+        <section className="mt-12 border-t border-sand-200 pt-6">
+          <h2 className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink-500">
             Related topics
           </h2>
           <div className="flex flex-wrap gap-2">
@@ -92,7 +92,7 @@ export default function TagPage({ params }: { params: Params }) {
               <Link
                 key={t.slug}
                 href={`/blog/tag/${t.slug}`}
-                className="rounded-full border border-brand-200 px-3 py-1 text-sm text-brand-700 hover:bg-brand-50"
+                className="rounded-full bg-sand-100 px-3 py-1 text-sm text-ink-700 transition-colors hover:bg-brand-50 hover:text-brand-700"
               >
                 #{t.tag}
               </Link>

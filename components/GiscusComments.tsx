@@ -6,10 +6,10 @@ export function GiscusComments() {
   return (
     <div className="mt-8">
       <div className="mb-4">
-        <h2 className="text-xl font-bold text-ink-900">Comments & Questions</h2>
+        <h2 className="text-xl font-semibold text-ink-900">Comments & Questions</h2>
       </div>
       {/* 采用纯净白底和细边框包裹，完美融合亮色主题 */}
-      <div className="rounded-2xl border border-brand-100 bg-white p-4 shadow-sm sm:p-8">
+      <div className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-sand-200 sm:p-8">
         <Giscus
           id="comments"
           repo="midcodehub/yakrigged"

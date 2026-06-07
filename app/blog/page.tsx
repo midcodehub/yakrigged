@@ -101,10 +101,10 @@ export default function BlogIndexPage({
               : [{ label: 'Blog' }]
           }
         />
-        <h1 className="text-3xl font-bold text-ink-900 sm:text-4xl">
+        <h1 className="text-4xl font-semibold text-ink-900 sm:text-5xl">
           The YakRigged Blog
         </h1>
-        <p className="mt-3 max-w-2xl text-lg text-ink-700">
+        <p className="mt-4 max-w-2xl text-xl leading-relaxed text-ink-600">
           Hand-tested reviews, repair walk-throughs, and water-tested rigging
           ideas. New articles drop most weeks.
         </p>
@@ -126,8 +126,8 @@ export default function BlogIndexPage({
               className={
                 'rounded-full border px-4 py-1.5 text-sm transition-colors ' +
                 (active
-                  ? 'border-brand-600 bg-brand-600 text-white'
-                  : 'border-brand-200 text-brand-700 hover:bg-brand-50')
+                  ? 'border-brand-700 bg-brand-700 text-white'
+                  : 'border-sand-300 text-ink-700 hover:border-brand-400 hover:text-brand-700')
               }
             >
               {c.label}
@@ -138,7 +138,7 @@ export default function BlogIndexPage({
       </nav>
 
       {posts.length === 0 ? (
-        <p className="rounded-lg border border-dashed border-brand-200 p-8 text-center text-ink-500">
+        <p className="rounded-lg border border-dashed border-sand-300 p-8 text-center text-ink-500">
           No articles in this category yet.
         </p>
       ) : (
@@ -150,8 +150,8 @@ export default function BlogIndexPage({
       )}
 
       {/* Popular topics — internal linking for SEO crawl depth + topic signals */}
-      <section className="mt-16 border-t border-brand-100 pt-8">
-        <h2 className="mb-4 text-lg font-bold text-ink-900">
+      <section className="mt-16 border-t border-sand-200 pt-8">
+        <h2 className="mb-4 text-xl font-semibold text-ink-900">
           Popular topics
         </h2>
         <div className="flex flex-wrap gap-2">
@@ -161,7 +161,7 @@ export default function BlogIndexPage({
               <Link
                 key={t.slug}
                 href={`/blog/tag/${t.slug}`}
-                className="rounded-full border border-brand-200 px-3 py-1.5 text-sm text-brand-700 hover:bg-brand-50"
+                className="rounded-full bg-sand-100 px-3 py-1.5 text-sm text-ink-700 transition-colors hover:bg-brand-50 hover:text-brand-700"
               >
                 #{t.tag}
                 <span className="ml-1 text-xs opacity-60">({t.count})</span>

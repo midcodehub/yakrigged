@@ -38,11 +38,19 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-16 border-t border-brand-100 bg-brand-50/40">
+    <footer className="mt-16 border-t border-sand-200 bg-sand-50">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-4 sm:items-start">
         {/* Column 1 —— 品牌 + 版权 */}
         <div className="text-sm text-ink-700">
-          <p className="text-base font-semibold text-brand-700">{SITE.name}</p>
+          <p className="flex items-center gap-2 font-display text-lg font-semibold text-ink-900">
+            <svg aria-hidden viewBox="0 0 64 64" className="h-6 w-6 shrink-0">
+              <rect width="64" height="64" rx="14" fill="#1a564b" />
+              <path d="M32 12 C 40 20, 40 44, 32 52 C 24 44, 24 20, 32 12 Z" fill="#f7f4ee" />
+              <ellipse cx="32" cy="32" rx="3" ry="5.2" fill="#1a564b" />
+              <line x1="15" y1="41" x2="49" y2="23" stroke="#f4a45f" strokeWidth="3.4" strokeLinecap="round" />
+            </svg>
+            {SITE.name}
+          </p>
           <p className="mt-1">© {year} {SITE.name}.</p>
           <p className="mt-1 text-ink-500">{SITE.tagline}.</p>
         </div>

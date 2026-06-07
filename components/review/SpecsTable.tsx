@@ -21,13 +21,13 @@ interface Props {
 export function SpecsTable({ rows = [], title }: Props) {
   if (rows.length === 0) return null;
   return (
-    <div className="my-8 overflow-hidden rounded-lg border border-brand-100">
+    <div className="my-8 overflow-hidden rounded-lg ring-1 ring-sand-200">
       {title && (
-        <div className="border-b border-brand-100 bg-brand-50 px-4 py-2 text-sm font-semibold text-brand-800">
+        <div className="border-b border-sand-200 bg-sand-100 px-4 py-2 text-sm font-semibold text-ink-900">
           {title}
         </div>
       )}
-      <dl className="divide-y divide-brand-100">
+      <dl className="divide-y divide-sand-200">
         {rows.map((row, i) => (
           <div
             key={i}

@@ -23,8 +23,8 @@ export default function SearchPage({
   return (
     <section className="mx-auto max-w-3xl">
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-ink-900 sm:text-4xl">Search</h1>
-        <p className="mt-2 text-ink-700">
+        <h1 className="text-4xl font-semibold text-ink-900 sm:text-5xl">Search</h1>
+        <p className="mt-3 text-lg text-ink-600">
           Type any keyword. We index the title, description, category, tags,
           author, and the first ~800 chars of body text.
         </p>
