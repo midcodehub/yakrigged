@@ -4,20 +4,19 @@
  * - 通过 metadata API 配置默认 SEO（页面级 metadata 会自动合并/覆盖这里）
  */
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { SITE } from '@/lib/consts';
+// 自托管字体（@fontsource）——不依赖 Google Fonts：GDPR 友好、更快、离线可构建。
+// Inter = 正文/UI；Fraunces = 标题展示衬线（含斜体给 ExpertQuote pull-quote）。
+// font-family 名：'Inter Variable' / 'Fraunces Variable'（见 app/globals.css 的 @theme）。
+import '@fontsource-variable/inter';
+import '@fontsource-variable/fraunces/wght.css';
+import '@fontsource-variable/fraunces/wght-italic.css';
 import './globals.css';
-
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-});
 
 export const metadata: Metadata = {
   // metadataBase 决定 og:image / canonical 等相对路径如何展开成绝对 URL
@@ -75,7 +74,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en">
       <head />
       <body className="min-h-screen bg-paper font-sans text-ink-700 antialiased">
         <a

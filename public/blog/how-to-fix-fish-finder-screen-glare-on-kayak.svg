@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="How to fix fish finder screen glare on a kayak — YakRigged how-to guide cover">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="0.55" stop-color="#144841"/>
+      <stop offset="1" stop-color="#1f7065"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <g stroke="#2d8c7c" stroke-opacity="0.3" stroke-width="2.5" fill="none">
+    <path d="M0 600 Q 300 575 600 600 T 1200 600"/>
+    <path d="M0 635 Q 300 612 600 635 T 1200 635"/>
+  </g>
+  <g transform="translate(885,360)" opacity="0.17" fill="none" stroke="#d6efe9" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="-150" y="-100" width="300" height="210" rx="20"/>
+    <path d="M-115 55 Q -35 -15 40 40 T 120 18"/>
+    <g stroke-width="9"><circle cx="120" cy="-118" r="26"/>
+    <line x1="120" y1="-165" x2="120" y2="-150"/><line x1="120" y1="-86" x2="120" y2="-71"/>
+    <line x1="73" y1="-118" x2="88" y2="-118"/><line x1="152" y1="-118" x2="167" y2="-118"/>
+    <line x1="87" y1="-151" x2="98" y2="-140"/><line x1="142" y1="-96" x2="153" y2="-85"/></g>
+  </g>
+  <rect x="80" y="158" width="70" height="9" rx="4.5" fill="#f08a3e"/>
+  <text x="80" y="138" font-family="Arial, Helvetica, sans-serif" font-size="27" letter-spacing="5" font-weight="700" fill="#aedfd3">YAKRIGGED · HOW-TO GUIDE</text>
+  <text x="78" y="298" font-family="Arial, Helvetica, sans-serif" font-size="80" font-weight="800" fill="#ffffff">Fix Fish Finder</text>
+  <text x="78" y="388" font-family="Arial, Helvetica, sans-serif" font-size="80" font-weight="800" fill="#ffffff">Screen <tspan fill="#f08a3e">Glare</tspan></text>
+  <text x="80" y="458" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="500" fill="#d6efe9">7 fixes ranked, $0 to $30</text>
+</svg>

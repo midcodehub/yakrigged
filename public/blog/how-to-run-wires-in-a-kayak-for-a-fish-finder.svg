@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="How to run wires in a kayak for a fish finder — YakRigged how-to guide cover">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="0.55" stop-color="#144841"/>
+      <stop offset="1" stop-color="#1f7065"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <g stroke="#2d8c7c" stroke-opacity="0.3" stroke-width="2.5" fill="none">
+    <path d="M0 600 Q 300 575 600 600 T 1200 600"/>
+    <path d="M0 635 Q 300 612 600 635 T 1200 635"/>
+  </g>
+  <g transform="translate(880,355)" opacity="0.17">
+    <path d="M-165 -85 C -35 -125, -45 45, 80 5 S 175 80, 150 105" fill="none" stroke="#d6efe9" stroke-width="13" stroke-linecap="round"/>
+    <rect x="128" y="86" width="54" height="36" rx="8" fill="#d6efe9"/>
+  </g>
+  <rect x="80" y="158" width="70" height="9" rx="4.5" fill="#f08a3e"/>
+  <text x="80" y="138" font-family="Arial, Helvetica, sans-serif" font-size="27" letter-spacing="5" font-weight="700" fill="#aedfd3">YAKRIGGED · HOW-TO GUIDE</text>
+  <text x="78" y="298" font-family="Arial, Helvetica, sans-serif" font-size="88" font-weight="800" fill="#ffffff">Run Wires</text>
+  <text x="78" y="397" font-family="Arial, Helvetica, sans-serif" font-size="88" font-weight="800" fill="#ffffff">Without <tspan fill="#f08a3e">Leaks</tspan></text>
+  <text x="80" y="467" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="500" fill="#d6efe9">Clean cable routing for electronics</text>
+</svg>

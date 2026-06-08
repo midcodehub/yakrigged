@@ -50,17 +50,14 @@
   --color-ink-400: #a89e8d;     /* 仅装饰用，勿用于正文 */
 
   /* ---- 字体栈 ---- */
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
-  /* 展示衬线：默认走"高质量系统衬线栈" —— 户外杂志感的来源。
-     选这个而非 webfont 的理由：零字体下载 = 最优 Core Web Vitals（你定的性能优先），
-     且本地可构建、各平台优雅回退（Apple→Iowan Old Style，Win→Cambria/Palatino，兜底 Georgia）。
-     想换更有个性的 Fraunces：在 layout.tsx 用 next/font 加载它，再把下面首项换成 var(--font-fraunces)
-     即可（本地沙箱封了 fonts.gstatic.com 装不了，但 Vercel 构建能正常拉取）。 */
-  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
+  /* 展示衬线：Fraunces（自托管 @fontsource，由 layout.tsx 引入）——户外杂志感的核心。
+     缺失时优雅回退到高质量系统衬线栈（Apple→Iowan Old Style，Win→Cambria/Palatino，兜底 Georgia），
+     所以即便字体没加载，标题也不会崩。 */
+  --font-display: "Fraunces Variable", "Iowan Old Style", "Palatino Linotype", Palatino,
     Georgia, Cambria, "Times New Roman", serif;
-  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
-    Georgia, Cambria, serif;
+  --font-serif: "Fraunces Variable", "Iowan Old Style", Palatino, Georgia, Cambria, serif;
 
   /* ---- 阴影：更柔、带暖调，克制 ---- */
   --shadow-sm: 0 1px 2px rgba(28, 26, 22, 0.04), 0 1px 3px rgba(28, 26, 22, 0.05);
