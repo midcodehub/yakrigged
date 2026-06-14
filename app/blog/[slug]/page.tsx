@@ -19,7 +19,7 @@ import { BlogCard } from '@/components/BlogCard';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { NewsletterForm } from '@/components/NewsletterForm';
 import { CommunityBanner } from '@/components/CommunityBanner';
-import { GiscusComments } from '@/components/GiscusComments';
+import { CommentsLazy } from '@/components/comments/CommentsLazy';
 import { mdxComponents } from '@/lib/mdx-components';
 import {
   authorToSlug,
@@ -266,8 +266,8 @@ export default function BlogPostPage({
       <div className="mt-16 space-y-6">
         <CommunityBanner />
         
-        <GiscusComments />
-        
+        <CommentsLazy slug={post.slug} />
+
         <div className="rounded-2xl bg-white p-6 ring-1 ring-sand-200 sm:p-8">
           <NewsletterForm
             source="article"
