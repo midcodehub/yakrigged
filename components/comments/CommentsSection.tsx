@@ -93,7 +93,7 @@ export function CommentsSection({ slug }: { slug: string }) {
   const submit = useCallback(
     async (
       parentId: string | null,
-      args: { body: string; name: string | null; token?: string },
+      args: { body: string; name: string | null; token?: string; website?: string },
     ): Promise<ApiEnvelope<PublicComment | null>> => {
       const res = await postComment({
         slug,
@@ -101,6 +101,7 @@ export function CommentsSection({ slug }: { slug: string }) {
         body: args.body,
         authorName: args.name,
         turnstileToken: args.token,
+        website: args.website,
       });
       if (res.ok && res.status === 'approved' && res.data) {
         setFlat((prev) => [...prev, res.data as PublicComment]);
@@ -148,6 +149,18 @@ export function CommentsSection({ slug }: { slug: string }) {
         ) : (
           <>
             <CommentComposer onSubmit={(args) => submit(null, args)} />
+
+            <p className="mt-2 text-xs text-ink-400">
+              Be kind and stay on topic. By posting you agree to our{' '}
+              <a href="/privacy" className="underline hover:text-ink-600">
+                Privacy Policy
+              </a>{' '}
+              and{' '}
+              <a href="/terms" className="underline hover:text-ink-600">
+                Terms
+              </a>
+              .
+            </p>
 
             {notice && (
               <p className="mt-4 rounded-lg bg-sand-50 px-3 py-2 text-sm text-ink-600">

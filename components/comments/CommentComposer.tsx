@@ -35,6 +35,7 @@ export function CommentComposer({
     body: string;
     name: string | null;
     token?: string;
+    website?: string;
   }) => Promise<ApiEnvelope>;
   compact?: boolean;
   autoFocus?: boolean;
@@ -46,6 +47,7 @@ export function CommentComposer({
 }) {
   const [name, setName] = useState('');
   const [body, setBody] = useState(initialBody);
+  const [website, setWebsite] = useState(''); // 蜜罐:真人留空
   const [token, setToken] = useState<string | null>(null);
   const [turnstileKey, setTurnstileKey] = useState(0);
   const [showPicker, setShowPicker] = useState(false);
@@ -101,6 +103,7 @@ export function CommentComposer({
       body: body.trim(),
       name: trimmedName || null,
       token: token ?? undefined,
+      website, // 蜜罐:正常为空字符串
     });
 
     setSubmitting(false);
@@ -130,6 +133,17 @@ export function CommentComposer({
 
   return (
     <form onSubmit={handleSubmit} className={compact ? 'mt-3' : 'mt-2'}>
+      {/* 蜜罐:真人看不到也不会填,机器人常自动填 → 服务端据此静默拦截 */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden
+        value={website}
+        onChange={(e) => setWebsite(e.target.value)}
+        className="absolute left-[-9999px] h-0 w-0 opacity-0"
+      />
       {!compact && (
         <input
           type="text"

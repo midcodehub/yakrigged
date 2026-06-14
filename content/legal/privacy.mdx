@@ -1,15 +1,17 @@
 ---
 title: "Privacy Policy"
 description: "What YakRigged collects, why, and how to opt out — written in plain English, no dark patterns."
-updatedDate: 2026-05-23
+updatedDate: 2026-06-14
 ---
 
 > **Plain-English summary.** YakRigged is a small editorial site. We don't
 > sell your data, we don't run third-party ad networks, and we don't drop
-> tracking cookies. The only personal data we hold is your email address if
-> you subscribed to the newsletter, and we hand that to our newsletter
-> provider (Beehiiv) — nowhere else. The longer version is below for the
-> people who need it (and for regulators).
+> tracking cookies. The personal data we hold is minimal: your email
+> address if you subscribed to the newsletter (handed to our provider,
+> Beehiiv), and any comment you choose to post (stored with our database
+> provider, Supabase). You can comment **anonymously** — no account or
+> email required — and you can delete your own comments anytime. The longer
+> version is below for the people who need it (and for regulators).
 
 This page describes how YakRigged ("we", "us") handles information about
 visitors to **yakrigged.com**. We try to keep it short and honest. If you
@@ -70,6 +72,34 @@ prevention, rate-limiting). We do not use them for advertising or
 profiling. Vercel's retention policy applies; we do not export or analyze
 these logs in any other system.
 
+### 4. Comments you post
+
+If you leave a comment (or a reply, like, or dislike) on an article, we
+store:
+
+- **The comment text** itself, including any emoji — so we can display it.
+- **The display name** you optionally type. Leave it blank and you show up
+  as "Anonymous." We don't require a name, an email, or an account to
+  comment.
+- **A hashed version of your IP address.** We hash it one-way and use it
+  only for rate-limiting and abuse prevention. We don't store your raw IP
+  alongside the comment, and the hash is never shown publicly.
+- **An anonymous browser ID.** The first time you interact with the comment
+  box, we create a random anonymous identifier (a Supabase "anonymous
+  sign-in") stored in your browser. It lets you edit or delete your own
+  comments and stops double-voting. It is **not** linked to your name,
+  email, or any profile, and it is **not** used to track you across the
+  site.
+
+Comments and their like/dislike counts are **public** — don't post anything
+you wouldn't want the world, or a search engine, to see. You can edit or
+delete your own comment at any time with the buttons on it.
+
+Comments are stored by **Supabase** (our database provider). New comments
+are screened for spam and abuse with **Cloudflare Turnstile** (a human
+check) and **Upstash** (rate-limiting). See the GDPR section below for how
+these map.
+
 ## What we do NOT collect
 
 For clarity, here's what we are **not** doing:
@@ -78,11 +108,14 @@ For clarity, here's what we are **not** doing:
   ad network of any kind).
 - ❌ No cross-site tracking pixels.
 - ❌ No selling of your email or any other data to anyone.
-- ❌ No first-party tracking cookies. The site does not set a cookie when
-  you load a page.
-- ❌ No "essential" cookie banner because there are no cookies to consent
-  to. (If we ever add one, we will add a banner and update this page
-  *before* it goes live.)
+- ❌ No first-party tracking or advertising cookies. Loading a page sets no
+  cookie. Two narrow, strictly-functional exceptions apply **only if you
+  interact with comments**: (a) posting a comment stores a random anonymous
+  ID in your browser's local storage so you can manage your own comments
+  and votes — it identifies a browser, not a person, and isn't used for
+  tracking; (b) our anti-spam human check (Cloudflare Turnstile) may set a
+  strictly-necessary cookie to tell humans from bots. Neither is used for
+  advertising or cross-site profiling.
 
 ## Embedded videos (YouTube)
 
@@ -142,6 +175,9 @@ You can, at any time:
   metadata, or nothing if you haven't subscribed).
 - **Delete it.** Same email address — we'll remove you from Beehiiv and
   confirm.
+- **Delete your own comments.** Every comment you post has **Edit** and
+  **Delete** buttons — use them anytime, no email required. Or email us and
+  we'll remove them for you.
 - **Unsubscribe.** Use the link at the bottom of any newsletter, no email
   required.
 - **Object to processing.** We don't do automated decision-making or
@@ -160,15 +196,26 @@ Because the questions come up — here's the regulator-readable version.
 - **Lawful basis for analytics and server logs (GDPR Art. 6(1)(f)):**
   legitimate interest in running and securing the site, balanced against
   minimal data and no persistent identifier.
-- **Categories of personal data processed:** email address, IP address,
-  approximate technical metadata (browser, referrer, UTM).
+- **Lawful basis for comments:** the content you choose to post is
+  processed on your **consent** (Art. 6(1)(a)) — you actively submit it; the
+  anti-spam metadata (hashed IP, anonymous browser ID, human check) is
+  processed on **legitimate interest** (Art. 6(1)(f)) in keeping the comment
+  section free of spam and abuse.
+- **Categories of personal data processed:** email address, IP address (raw
+  in transient server logs; hashed for comment rate-limiting), approximate
+  technical metadata (browser, referrer, UTM), and — if you comment — your
+  comment text, optional display name, and an anonymous browser ID.
 - **Recipients / processors:** Beehiiv (newsletter delivery), Vercel
-  (hosting + analytics).
-- **International transfers:** Vercel and Beehiiv are US-based. Where you
-  are in the EU/UK, transfers rely on the EU–US Data Privacy Framework or
+  (hosting + analytics), Supabase (comment storage + anonymous auth),
+  Cloudflare (Turnstile anti-spam human check), Upstash (rate-limiting).
+- **International transfers:** Vercel, Beehiiv, Supabase, Cloudflare, and
+  Upstash are US-based or operate global infrastructure. Where you are in
+  the EU/UK, transfers rely on the EU–US Data Privacy Framework or
   equivalent Standard Contractual Clauses maintained by those processors.
 - **Retention:**
   - Newsletter email — until you unsubscribe or request deletion.
+  - Comments — until you delete them or we remove them.
+  - Hashed IPs / rate-limit counters — short-lived, for abuse prevention.
   - Server logs — Vercel's default retention (typically 30 days).
   - Analytics — aggregated; no individual record to delete.
 - **CCPA "Do Not Sell or Share":** we do not sell or share personal

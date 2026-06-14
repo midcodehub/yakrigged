@@ -42,6 +42,7 @@ export async function postComment(input: {
   body: string;
   authorName: string | null;
   turnstileToken?: string;
+  website?: string;
 }): Promise<ApiEnvelope<PublicComment | null>> {
   const headers = await authHeaders();
   const res = await fetch('/api/comments', {
