@@ -115,6 +115,7 @@ export default function BlogPostPage({
       ))}
 
       <Breadcrumbs
+        currentHref={`/blog/${post.slug}`}
         items={[
           { label: 'Blog', href: '/blog' },
           { label: post.data.category, href: `/blog?category=${post.data.category}` },

@@ -15,6 +15,7 @@
 | Best fish finders for kayaks | ✅ | `best-fish-finders-for-kayaks-2026` |
 | Transducer mount (no-drill) | ✅ | `best-no-drill-transducer-mount-for-kayaks` |
 | Mount transducer inside hull | ✅ | `can-you-mount-a-fish-finder-transducer-inside-a-kayak` |
+| Garmin Striker 4 no-drill install | ✅ | `garmin-striker-4-kayak-no-drill-mount` |
 | LiFePO4 battery for LiveScope | ✅ | `best-lifepo4-battery-for-garmin-livescope-kayak` |
 | Waterproof electronics box | ✅ | `diy-waterproof-kayak-electronics-box` |
 | Wire routing | ✅ | `how-to-run-wires-in-a-kayak-for-a-fish-finder` |

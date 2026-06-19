@@ -25,25 +25,29 @@ export interface BreadcrumbItem {
 
 interface Props {
   items: BreadcrumbItem[];
+  /** 当前页路径；用于给最后一项 BreadcrumbList 补精确 URL */
+  currentHref?: string;
 }
 
-export function Breadcrumbs({ items }: Props) {
+export function Breadcrumbs({ items, currentHref }: Props) {
   // Home 永远是第一项，组件内部自动添加
   const fullItems: BreadcrumbItem[] = [{ label: 'Home', href: '/' }, ...items];
 
   // 构造 schema.org BreadcrumbList
   const base = SITE.url.replace(/\/$/, '');
+  const toAbsUrl = (href: string) => `${base}${href.startsWith('/') ? '' : '/'}${href}`;
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: fullItems.map((item, i) => ({
-      '@type': 'ListItem',
-      position: i + 1,
-      name: item.label,
-      // 即使是最后一项（无 href）也补一个绝对 URL，因为 schema 要求；
-      // 用当前页 URL 兜底由调用方在 page 里更精确地做。这里给 SITE.url 即可
-      item: item.href ? `${base}${item.href}` : undefined,
-    })),
+    itemListElement: fullItems.map((item, i) => {
+      const href = item.href ?? currentHref;
+      return {
+        '@type': 'ListItem',
+        position: i + 1,
+        name: item.label,
+        ...(href ? { item: toAbsUrl(href) } : {}),
+      };
+    }),
   };
 
   return (
