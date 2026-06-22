@@ -88,7 +88,7 @@ package.json
 5. 在 Vercel 项目里绑定自己的域名即可
 
 > `lib/consts.ts` 里的 `SITE.url` 会优先读 `NEXT_PUBLIC_SITE_URL`，
-> 这样 sitemap / RSS / OG 都会用你的正式域名而不是占位的 `yakrigged.com`。
+> 这样 sitemap / RSS / OG 都会用你的正式域名而不是占位的 `www.yakrigged.com`。
 
 ## 📊 SEO 内置项
 

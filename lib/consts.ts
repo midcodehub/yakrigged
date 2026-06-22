@@ -15,7 +15,7 @@ export const SITE = {
     'Independent kayak fishing gear reviews, rigging guides, and destination notes. We test rod holders, fish finders, PFDs, paddles and more on real water — so you can make better buying decisions.',
   /** 站点正式域名（部署到 Vercel 后请替换为自己的域名） */
   url:
-    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://yakrigged.com',
+    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.yakrigged.com',
   /** 默认作者（SEO / RSS author 字段会用） */
   author: 'YakRigged Editorial',
   /** 默认语言 */
